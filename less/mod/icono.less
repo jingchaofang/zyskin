@@ -1,0 +1,40 @@
+@import "../lib/variables.less";
+/**
+ * @file 公用css绘制图标类
+ * @author jingchaofang <fangjingchao@zhangyue.com>
+ */
+[class*="icono-"] {
+    position: relative;
+    font-style: normal;
+    &, & *{
+        box-sizing: border-box;
+    }
+}
+
+/**
+ * carets插入符号,空心箭头
+ */
+.icono-caret-right(@w:24,@h:24,@border:3,@color:@info-color) {
+    @cal-base: 3px;
+    width: @w/@cal-base;
+    height: @h/@cal-base;
+    &:after {
+        content:'';
+        box-sizing: border-box;
+        pointer-events: none;
+        display: block;
+        width: @w/@cal-base;
+        height: @h/@cal-base;
+        border: @border/@cal-base solid;
+        border-color: @color @color transparent transparent;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+}
+.icono-caret-right {
+    .icono-caret-right();
+}
+
+
+
+

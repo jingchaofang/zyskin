@@ -1,0 +1,77 @@
+@import "../lib/utilities.less";
+/**
+ * @file 常用flex功能样式固化为样式类，节省代码量
+ * @author jingchaofang <fangjingchao@zhangyue.com>
+ * @depend lib/utilities.less
+ */
+
+// flex容器默认水平流方向
+.flex {
+    .flex();
+}
+// 相对于外容器呈一行垂直居中，水平居左
+.flex-v-center {
+    .flex();
+    .flex-cross-center();
+}
+// 相对于外容器呈一行垂直顶部对齐，水平居中
+.flex-h-center {
+    .flex();
+    .flex-main-center();
+}
+// 相对于外容器呈一行垂直底部对齐，水平居左
+.flex-v-end {
+    .flex();
+    .flex-cross-end();
+}
+// 伸缩项目相对外容器呈一行垂直居中，水平两端对齐
+.flex-justify-v-center {
+    .flex();
+    .flex-main-justify();
+    .flex-cross-center();
+}
+// 伸缩项目相对外容器呈一行垂直居中，水平居右
+.flex-end-v-center {
+    .flex();
+    .flex-main-end();
+    .flex-cross-center();
+}
+// 相对外容器呈一行垂直居中，水平居中
+.flex-all-center {
+    .flex();
+    .flex-cross-center();
+    .flex-main-center();
+}
+// flex容器垂直流方向
+.flexcol {
+    .flex();
+    .flex-direction-column();
+}
+// 相对外容器呈列垂直居中，水平居左
+.flexcol-v-center {
+    .flexcol();
+    .flex-main-center();
+}
+// 相对外容器呈列垂直底部对齐，水平居中
+.flexcol-h-center {
+    .flexcol();
+    .flex-cross-center();
+}
+// 伸缩项目相对外容器呈列垂直两端对齐，水平居中
+.flexcol-justify-h-center {
+    .flexcol();
+    .flex-main-justify();
+    .flex-cross-center();
+}
+// 相对外容器呈列垂直居中，水平居中
+.flexcol-all-center {
+    .flex();
+    .flex-direction-column();
+    .flex-main-center();
+    .flex-cross-center();
+}
+// 作用于伸缩项目，均分剩余空间
+.flex-item {
+    .flex-item();
+}
+

@@ -1,0 +1,96 @@
+/**
+ * @file 混合函数
+ * @author jingchaofang <fangjingchao@zhangyue.com>
+ */
+
+/**
+ * 指定选择器添加物理1px边框样式,适用于单次使用1px
+ * @usage less: 
+ *        #border-1px > .border-1px(...);
+ * @param  @selector          选择器
+ * @param  @position:relative 定位方式(relative|fixed)
+ * @param  @w:1px 1px 1px 1px 边框宽度(上、右、下、左)
+ * @param  @c:#e0e0e0         边框色值
+ * @param  @r:4               边框弧度
+ */
+#border-1px {
+    // 公共伪类样式
+    .border-1px-after() {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: block;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        pointer-events: none;
+        border-style: solid;
+    }
+    // 边框定制接口
+    .border-1px-media(@selector,@r) {
+        @media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+            .@{selector}:after {
+                right: -1px;
+                bottom: -1px;
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                border-radius: 1*@r/@cal-base;
+            }
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+            .@{selector}:after {
+                right: -100%;
+                bottom: -100%;
+                -webkit-transform: scale(0.5);
+                transform: scale(0.5);
+                border-radius: 2*@r/@cal-base;
+            }
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+            .@{selector}:after {
+                right: -200%;
+                bottom: -200%;
+                -webkit-transform: scale(0.333333);
+                ransform: scale(0.333333);
+                border-radius: 3*@r/@cal-base;
+            }
+        }
+    }
+    // 弧度定制接口
+    .border-1px-radius(@r) when(isnumber(@r)) {
+        @media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+            &:after {
+                border-radius: 1.5*@r/@cal-base;
+            }
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+            &:after {
+                border-radius: 2*@r/@cal-base;
+            }
+        }
+        @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+            &:after {
+                border-radius: 3*@r/@cal-base;
+            }
+        }
+    }
+    // 组装
+    .border-1px(@selector,@position:relative,@w:1px 1px 1px 1px,@c,@r) {
+        .@{selector} {
+            position: @position;
+            &:after {
+                #border-1px > .border-1px-after();
+                border-width: @w;
+                border-color: @c;
+            }
+        }
+        #border-1px > .border-1px-media(@selector,@r);
+    }
+}
+
+
+
