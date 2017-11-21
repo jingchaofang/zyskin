@@ -1,0 +1,127 @@
+@import "../lib.less";
+/**
+ * @file 常用动画
+ * @author jingchaofang <fangjingchao@zhangyue.com>
+ */
+
+/**
+ * 翻牌效果
+ */
+.flipcard(@speed) {
+    .animation(flipcard @speed linear);
+    .keyframes() {
+        0% {
+            .transform(rotateY(0deg));
+        }
+        50% {
+            .transform(rotateY(90deg));
+        }
+        100% {
+            .transform(rotateY(0deg));
+        }
+    }
+    @keyframes flipcard {
+        .keyframes();
+    }
+    @-webkit-keyframes flipcard {
+        .keyframes();
+    }
+}
+/**
+ * 匀速旋转动画
+ * @param @speed .2s 动画周期速度
+ */
+.linear-rotate(@speed) {
+    .animation(rotate @speed linear infinite); // lib/utilities.less
+    .keyframes() {
+        from {
+            .transform(rotate(0deg));
+        }
+        to {
+            .transform(rotate(360deg));
+        }
+    }
+    @keyframes rotate {
+        .keyframes();
+    }
+    @-webkit-keyframes rotate {
+        .keyframes();
+    }
+}
+/**
+ * 页面加载loading
+ * 黄色和红色小球的循环交替
+ */
+.page-loading() {
+    position: relative;
+    z-index: 10;
+    display: inline-block;
+    width: 34px;
+    height: 10px;
+    transform-style: preserve-3d;
+    &:before,
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        backface-visibility:hidden;
+    }
+    &:before {
+        left: 0;
+        background-color: #fbac16;
+        .animation(transleft 1.2s linear infinite);
+    }
+    &:after {
+        right: 0;
+        background-color: #ed7771;
+        .animation(transright 1.2s linear infinite);
+    }
+    @keyframes transleft {
+        25% {
+            .transform(translate3d(12px, 0, 0));
+        }
+        50% {
+            .transform(translate3d(24px, 0, 0));
+        }
+        75% {
+            .transform(translate3d(12px, 0, 1px));
+        }
+    }
+    @-webkit-keyframes transleft {
+        25% {
+            .transform(translate3d(12px, 0, 0));
+        }
+        50% {
+            .transform(translate3d(24px, 0, 0));
+        }
+        75% {
+            .transform(translate3d(12px, 0, 1px));
+        }
+    }
+    @keyframes transright {
+        25% {
+            .transform(translate3d(-12px, 0, 1px));
+        }
+        50% {
+            .transform(translate3d(-24px, 0, 0));
+        }
+        75% {
+            .transform(translate3d(-12px, 0, 0));
+        }
+    }
+    @-webkit-keyframes transright {
+        25% {
+            .transform(translate3d(-12px, 0, 1px));
+        }
+        50% {
+            .transform(translate3d(-24px, 0, 0));
+        }
+        75% {
+            .transform(translate3d(-12px, 0, 0));
+        }
+    }
+}

@@ -1,0 +1,338 @@
+/**
+ * @file 工具函数
+ * @author jingchaofang <fangjingchao@zhangyue.com>
+ */
+
+/**
+ * 透视
+ * 应用在舞台元素上（动画元素们的共同父辈元素）
+ * perspective: none | <length>
+ * perspective取值为none或不设置，就没有真3D空间。
+ * perspective取值越小，3D效果就越明显，也就是你的眼睛越靠近真3D。
+ * perspective的值无穷大，或值为0时与取值为none效果一样。
+ * http://caniuse.com/#search=perspective
+ */
+.perspective(@arguments) {
+    -webkit-perspective: @arguments;
+    perspective: @arguments;
+}
+
+/**
+ * backface-visibility属性决定元素旋转背面是否可见。对于未旋转的元素，该元素的正面面向观看者。当其Y轴旋转约180度时会导致元素的背面面对观众。
+ * http://caniuse.com/#search=backface-visibility
+ */
+.backface-visibility(@arguments) {
+    -webkit-backface-visibility: @arguments;
+    backface-visibility: @arguments;
+}
+
+/**
+ * transform-style: flat | preserve-3d. 前者flat为默认值，表示平面的；后者preserve-3d表示3D透视
+ * 应用在舞台元素上（动画元素们的共同父辈元素）
+ * http://caniuse.com/#search=transform-style
+ */
+.transform-style(@arguments) {
+    -webkit-transform-style: @arguments;
+    transform-style: @arguments;
+}
+
+/**
+ * filter 滤镜
+ * @param  {[type]} @value [description]
+ * @return {[type]}        [description]
+ * http://caniuse.com/#feat=css-filters
+ */
+.filter(@arguments) {
+    -webkit-filter: @arguments;
+    filter: @arguments;
+}
+/**
+ * 背景的绘制区域
+ * @param arguments 背景绘制区域
+ *                  border-box 背景被裁剪到边框盒（背景在边框处裁掉可展现rgba边框透明）。
+ *                  padding-box 背景被裁剪到内边距框（解决某些android手机圆角失效）。
+ *                  content-box 背景被裁剪到内容框。
+ */
+.background-clip(@arguments) {
+    -webkit-background-clip: @arguments;
+    background-clip: @arguments;
+}
+/**
+ * 清除浮动
+ * http://www.cssmojo.com/latest_new_clearfix_so_far/
+ */
+.clearfix() {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+/**
+ * animation 动画简写属性 https://www.w3.org/TR/css3-animations/
+ * @param animation-name  规定需要绑定到选择器的keyframe名称;none规定无动画效果(可用于覆盖来自级联的动画)
+ * @param animation-duration 规定完成动画所花费的时间,单位可为s或ms;默认值0意味着没有动画效果
+ * @param animation-timing-function 规定动画的速度曲线
+ *                                  ease(默认):动画以低速开始,然后加快,在结束前变慢;
+ *                                  linear:动画从头到尾的速度是相同的;
+ *                                  ease-in:动画以低速开始;
+ *                                  ease-out:动画以低速结束;
+ *                                  ease-in-out:动画以低速开始和结束
+ *                                  cubic-bezier(n,n,n,n):在cubic-bezier三次贝塞尔函数中的值,可能的值是从0到1的数值.
+ * @param animation-delay 规定在动画开始之前的延迟,单位可为s或ms,默认0
+ * @param animation-iteration-count 规定动画应该播放的次数n;infinite规定动画无限次播放
+ * @param animation-direction 规定是否应该轮流反向播放动画
+ *                            normal(默认):动画应该正常播放;
+ *                            alternate:动画应该轮流反向播放.
+ */
+.animation(@arguments) {
+    -webkit-animation: @arguments;
+    animation: @arguments;
+}
+
+/**
+ * animation-play-state 属性规定动画正在运行还是暂停。
+ */
+.animation-play-state(@arguments) {
+    -webkit-animation-play-state: @arguments;
+    animation-play-state: @arguments;
+}
+
+/**
+ * animation-fill-mode 属性规定动画在播放之前或之后，其动画效果是否可见。
+ * animation-fill-mode property is not supported in Android browser below 2.3.
+ * @param @arguments none(默认) 不改变默认行为。
+ *                   forwards 当动画完成后,保持最后一个属性值(在最后一个关键帧中定义)
+ *                   backwards 在animation-delay所指定的一段时间内,在动画显示之前,应用开始属性值(在第一个关键帧中定义)
+ *                   both 向前和向后填充模式都被应用
+ */
+.animation-fill-mode(@arguments) {
+     -webkit-animation-fill-mode: @@arguments;
+     animation-fill-mode: @@arguments;
+}
+
+/**
+ * 设置边框半径为同样的值
+ * @param {string} @radius:3px 半径大小
+ */
+.rounded(@radius: 3px) {
+    -webkit-border-radius: @radius;
+    border-radius: @radius;
+    .background-clip(padding-box); // 背景在边框处裁掉可展现rgba边框透明
+}
+/**
+ * 设置边框半径为不同的值
+ * @param  {[type]} @topleft:     0  左上角边框半径形状
+ * @param  {[type]} @topright:    0  右上角边框半径形状
+ * @param  {[type]} @bottomright: 0  右下角边框半径形状
+ * @param  {[type]} @bottomleft:  0  左下角边框半径形状
+ */
+.border-radius(@topleft: 0, @topright: 0, @bottomright: 0, @bottomleft: 0) {
+    -webkit-border-top-left-radius: @topleft;
+    -webkit-border-top-right-radius: @topright;
+    -webkit-border-bottom-right-radius: @bottomright;
+    -webkit-border-bottom-left-radius: @bottomleft;
+    border-top-left-radius: @topleft;
+    border-top-right-radius: @topright;
+    border-bottom-right-radius: @bottomright;
+    border-bottom-left-radius: @bottomleft;
+    .background-clip(padding-box); // 背景在边框处裁掉可展现rgba边框透明
+}
+/**
+ * 转换
+ */
+.transform(@arguments) {
+    -webkit-transform: @arguments;
+    transform: @arguments;
+}
+.transform-origin(@arguments) {
+    -webkit-transform-origin: @arguments;
+    transform-origin: @arguments;
+}
+/**
+ * 过渡
+ * https://www.w3.org/TR/css3-transitions/
+ * 执行变换的属性：transition-property
+ * 变换延续的时间：transition-duration
+ * 在延续时间段，变换的速率变化：transition-timing-function
+ * 变换延迟时间：transition-delay
+ * 
+ * 注意：类似需要厂商前缀的transform属性不能使用当前函数，需要手写满足如下
+ * -webkit-transition: -webkit-transform .2s linear;
+ * transition: transform .2s linear;
+ */
+.transition(@arguments) {
+    -webkit-transition: @arguments;
+    transition: @arguments;
+}
+/**
+ * 线性渐变gradients
+ * @param type 渐变类型,线性渐变linear;径向渐变radial,由它们的中心定义
+ * @param angle 角度(deg),向下180(默认)/向上0/向左-90/向右90
+ * @param color 渐变颜色结点、颜色占比%
+ * @usage less:
+ *        .gradients(linear;0;red,blue); 注意这里传参用的分号分割
+ */
+.gradients(@type;@angle;@color) when(@type = linear) {
+    background-image: -webkit-linear-gradient(unit((90-@angle),deg), @color);
+    background-image: linear-gradient(unit(@angle,deg), @color);
+}
+/**
+ * 径向渐变gradients
+ * @param type  渐变类型,线性渐变linear;径向渐变radial,由它们的中心定义
+ * @param shape 渐变形状,可以是值circle(圆形)或ellipse(椭圆形,默认)
+ *        size  用来确定径向渐变的结束形状大小,它可以是以下四个值：closest-side,farthest-side,closest-corner,farthest-corner
+ *            circle(圆形)下size可能显式设置为<length>。表示的是用长度值指定径向渐变的横向或纵向直径长度，
+ *            并根据横向和纵向的直径来确定径向渐变的形状是圆或者是椭圆。此值不能负值。
+ *            ellipse(椭圆形)下size可能显式设置为［<length>|<percentage>］。主要用来设置椭圆的大小。
+ *            第一个值代表椭圆的水平半径，第二个值代表垂直半径。这两个值除了使用<length>定义大小之外还可以使用<percentage>来定义这两半径大小。
+ *            使用<percentage>定义值是相对于径向渐变容器的尺寸。同样不能为负值。
+ *        position 定义径向渐变的圆心位置，默认为center
+ *            <length>：用长度值指定径向渐变圆心的横坐标或纵坐标。可以为负值。
+ *            <percentage>：用百分比指定径向渐变圆心的横坐标或纵坐标。可以为负值。
+ *            left：设置左边为径向渐变圆心的横坐标值。
+ *            center：设置中间为径向渐变圆心的横坐标值或纵坐标。
+ *            right：设置右边为径向渐变圆心的横坐标值。
+ *            top：设置顶部为径向渐变圆心的纵标值。
+ *            bottom：设置底部为径向渐变圆心的纵标值。
+ * @param color 渐变颜色结点、颜色占比%   
+ * 例：-webkit-radial-gradient(farthest-side circle at 50% 75%, rgb(220, 75, 200),rgb(0, 0, 75));
+ */
+.gradients(@type;@shape;@color) when(@type = radial) {
+    background-image: -webkit-radial-gradient(@shape,@color);
+    background-image: radial-gradient(@shape,@color);
+}
+/**
+ * 单行溢出打点...
+ */
+.ellipsis() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/**
+ * 多行溢出打点...
+ * @param  {number} @line:2 打点行数
+ */
+.multi-ellipsis(@line:2) {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: @line;
+    -webkit-box-orient: vertical;
+}
+/**
+ * 添加一个或多个阴影，多个阴影用逗号相隔
+ * .box-shadow(0px 9px 16px -8px rgba(0,0,0,.4));
+ * @param  h-shadow                必需,水平阴影的位置,允许负值
+ * @param  v-shadow                必需,垂直阴影的位置,允许负值
+ * @param  blur                    可选,模糊距离
+ * @param  spread                  可选,阴影的尺寸
+ * @param  color                   可选,阴影的颜色。
+ *                                 外部阴影(outset默认)内部阴影(inset)
+ * @trick  iphone6+上阴影无效，根据场景需要添加额外的border-radius处理
+ */
+.box-shadow(...) {
+    -webkit-box-shadow: @arguments;
+    box-shadow: @arguments;
+}
+/**
+ * 阴影实现内边框
+ * @param  {[type]} @width: 1px   边框宽度
+ * @param  {[type]} @color: #000  边框颜色
+ */
+.inner-border(@width: 1px, @color: #000) {
+    .box-shadow(inset 0 0 0 @width @color);
+}
+/**
+ * 阴影实现点击态，避免背景色实现不能遮罩原有背景图片的问题
+ * 因为:active不能作用在伪类元素上，可以父级下作用(例如&:active:after)
+ * @param @color:rgba(0, 0, 0, .5) 点击态色
+ * @trick ios上:active无效可添加js激活：document.body.addEventListener('touchstart', function() {})
+ */
+.active(@color: rgba(0, 0, 0, .5)) {
+    &:active {
+        // 这里不用.box-shadow(),是因为ios做了hack处理（额外的border-radius）
+        -webkit-box-shadow: inset 0 0 0 1000px @color;
+        box-shadow: inset 0 0 0 1000px @color;
+    }
+}
+// flexible容器初始化
+.flex() {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+// 内联flex容器
+.inline-flex() {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+}
+// 伸缩流垂直方向
+.flex-direction-column() {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+// 主轴两端对齐
+.flex-main-justify() {
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+// 主轴中间对齐
+.flex-main-center() {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+// 主轴底部对齐
+.flex-main-end() {
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+    justify-content: flex-end;
+}
+// 侧轴居中对齐
+.flex-cross-center() {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+// 侧轴顶边对齐
+.flex-cross-start() {
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+}
+// 侧轴底部对齐
+.flex-cross-end() {
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+    align-items: flex-end;
+}
+// 侧轴基线对齐
+.flex-cross-baseline() {
+    -webkit-box-align: baseline;
+    -webkit-align-items: baseline;
+    align-items: baseline;
+}
+// 给伸缩项目赋予自由伸缩的能力
+.flex-item() {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    width: 0%;
+}
+.flex-auto() {
+    -webkit-box-flex:1;
+    -webkit-flex:auto;
+    flex:auto;
+}
+/**
+ * 对应元素开启GPU硬件加速，可避免渲染残影
+ */
+.gpu() {
+    .transform(translate3d(0,0,0));
+}

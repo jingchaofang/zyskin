@@ -1,0 +1,282 @@
+ /**
+ * @file 混合函数
+ * @author jingchaofang <fangjingchao@zhangyue.com>
+ */
+
+/**
+ * ------
+ * 物理1px
+ * ------
+ */
+
+/**
+ * 公共伪类样式
+ */
+.border-1px-after() {
+    &:after {
+        content: "";
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: block;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        pointer-events: none;
+        border-style: solid;
+
+    }
+}
+/**
+ * 公共边框媒体查询适配样式
+ */
+.border-1px-media() {
+    @media only screen and (-webkit-min-device-pixel-ratio: 1) {
+        &:after {
+            right: 0;
+            bottom: 0;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.33) {
+        &:after {
+            right: -33%;
+            bottom: -33%;
+            -webkit-transform: scale(1/1.33);
+            transform: scale(1/1.33);
+        }
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+        &:after {
+            right: -50%;
+            bottom: -50%;
+            -webkit-transform: scale(1/1.5);
+            transform: scale(1/1.5);
+        }
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+        &:after {
+            right: -100%;
+            bottom: -100%;
+            -webkit-transform: scale(1/2);
+            transform: scale(1/2);
+        }
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+        &:after {
+            right: -200%;
+            bottom: -200%;
+            -webkit-transform: scale(1/3);
+            transform: scale(1/3);
+        }
+    }
+}
+/**
+ * 边框弧度定制接口
+ * @param @r 边框弧度值，可通过传入非数字参数不使用该定制样式
+ */
+.border-1px-radius(@r) when not (ispixel(@r)) and (isnumber(@r)) {
+    border-radius: @r/@cal-base;
+    @media only screen and (-webkit-min-device-pixel-ratio: 1) {
+        &:after {
+            border-radius: 1*@r/@cal-base;
+        }
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.33) {
+        &:after {
+            border-radius: 1.33*@r/@cal-base;
+        }
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+        &:after {
+            border-radius: 1.5*@r/@cal-base;
+        }
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+        &:after {
+            border-radius: 2*@r/@cal-base;
+        }
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+        &:after {
+            border-radius: 3*@r/@cal-base;
+        }
+    }
+}
+.border-1px-radius(@r) when (ispixel(@r)) {
+    border-radius: unit(@r)/@px-base;
+    @media only screen and (-webkit-min-device-pixel-ratio: 1) {
+        &:after {
+            border-radius: 1*unit(@r)/@px-base;
+        }
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.33) {
+        &:after {
+            border-radius: 1.33*unit(@r)/@px-base;
+        }
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+        &:after {
+            border-radius: 1.5*unit(@r)/@px-base;
+        }
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+        &:after {
+            border-radius: 2*unit(@r)/@px-base;
+        }
+    }
+    @media only screen and (-webkit-min-device-pixel-ratio: 3) {
+        &:after {
+            border-radius: 3*unit(@r)/@px-base;
+        }
+    }
+}
+/**
+ * 指定选择器添加物理1px边框样式，适用于单次使用1px
+ * 多次使用需加样式.border-1px再样式定制，详情见/common/static/css/ireader/mod/1px.less
+ * @usage less: 
+ *        #border-1px > .border-1px(...);
+ * @param @selector          选择器
+ * @param @position:relative 定位方式(relative|fixed)
+ * @param @w:1px 1px 1px 1px 边框宽度(上、右、下、左)
+ * @param @c:#e0e0e0         边框色值
+ * @param @r:4               边框弧度
+ * @scene 按钮边框，区块分割细线
+ */
+.border-1px(@selector,@position:relative,@w:1px 1px 1px 1px,@c,@r) {
+    .@{selector} {
+        position: @position;
+        .border-1px-after();
+        &:after {
+            border-width: @w;
+            border-color: @c;
+        }
+        .border-1px-media();
+        .border-1px-radius(@r);
+    }
+}
+
+/**
+ * 自定义边框样式
+ * @param  {[type]} @position 定位(fixed|relative)
+ * @param  {[type]} @w        边框宽
+ * @param  {[type]} @c        边框色
+ * @param  {[type]} @r        边框弧度
+ * @return {[type]}           自定义样式
+ */
+.border-1px-custom(@position,@w,@c,@r) {
+    position: @position;
+    &:after {
+        border-width: @w;
+        border-color: @c;
+    }
+    .border-1px-radius(@r);
+}
+
+/**
+ * -------
+ * 布局相关
+ * -------
+ */
+
+/**
+ * 基础按钮组装样式，1px标配，需显式添加.border-1px类
+ * 伸缩性前提：若非容器项目，需显示赋予display:inline-block;
+ * @param  {[type]} @h  按钮高度，若为px单位，显示传入px，配合.border-1px-radius()
+ * @param  {[type]} @p 按钮内边距，居中伸缩
+ * @param  {[type]} @fs  按钮文本字体大小
+ * @param  {[type]} @c  按钮文本色
+ * @param  {[type]} @r 按钮弧度
+ */
+.install-btn(@h, @p, @fs, @c, @r) {
+    padding: 0 @p/@px-base;
+    height: unit(@h)/@px-base;
+    line-height: unit(@h)/@px-base + 3/@px-base;
+    font-size: @fs;
+    color: @c;
+    .border-1px-custom(relative,1px,@c,@r);
+    vertical-align: bottom;
+    white-space: nowrap; // 按钮文本不换行，继续撑长按钮
+}
+/**
+ * 基本圆头按钮，1px标配，需显式添加.border-1px类
+ * @scene  心愿点赞按钮、我要投票按钮
+ * @param  {[type]} @height  按钮高度
+ * @param  {[type]} @p 按钮内边距，居中伸缩
+ * @param  {[type]} @fs  按钮文本字体大小
+ * @param  {[type]} @c  按钮文本色
+ */
+.round-btn(@h, @p, @fs, @c) {
+    .install-btn(@h, @p, @fs, @c, @h);
+}
+/**
+ * 前置伪类图标的按钮，后置已实现了1px
+ * TODO:统一书城图标尺寸
+ * @param  {[type]} @h        按钮高度，行高
+ * @param  {[type]} @p        按钮内边距
+ * @param  {[type]} @fs       文本大小
+ * @param  {[type]} @c        文本颜色
+ * @param  {[type]} @pseudo-w 前伪类图标宽
+ * @param  {[type]} @pseudo-h 前伪类图标高
+ * @param  {[type]} @pseudo-m 前伪类图标和按钮文本的间距，外边距
+ */
+.icon-round-btn(@h,@p,@fs,@c,@pseudo-w,@pseudo-h,@pseudo-m) {
+    .round-btn(@h, @p, @fs, @c);
+    &:before {
+        content: '';
+        display: inline-block;
+        width: @pseudo-w/@px-base;
+        height: @pseudo-h/@px-base;
+        margin-right: @pseudo-m/@px-base;
+    }
+}
+/**
+ * 基础标签组装样式，1px标配，需显式添加.border-1px类
+ * 伸缩性前提：若非容器项目，需显示赋予display:inline-block;
+ * @param  {[type]} @height  高度
+ * @param  {[type]} @padding 内边距，居中伸缩
+ * @param  {[type]} @fs 文本字体大小
+ * @param  {[type]} @c 文本色
+ * @param  {[type]} @r 弧度
+ */
+.install-label(@h, @padding, @fs, @c, @r) {
+    .install-btn(@h, @padding, @fs, @c, @r);
+}
+/**
+ * 基础角标样式
+ * 伸缩性前提：若非容器项目，需显示赋予display:inline-block;
+ * 应用绑定在了span上，非容器项目，需inline-block
+ * @param  {[type]} @h  高度
+ * @param  {[type]} @p 内边距，居中伸缩
+ * @param  {[type]} @fs 文本字体大小
+ * @param  {[type]} @c 文本色
+ * @param  {[type]} @r 弧度
+ * @param  {[type]} @bg 背景色
+ */
+.install-tag(@h, @p, @fs, @c, @r, @bg) {
+    display: inline-block;
+    padding: 0 @p/@px-base;
+    height: @h/@px-base;
+    line-height: @h/@px-base + 3/@px-base;
+    font-size: @fs;
+    color: @c;
+    border-radius: @r/@px-base;
+    vertical-align: bottom;
+    white-space: nowrap; // 按钮文本不换行，继续撑长按钮
+    background: @bg;
+}
+/**
+ * 基础角标样式
+ * 书籍运营相关的标签（推荐、独家、首发、包月、特价、免费等）
+ */
+.base-tag() when not(@skin = huawei) {
+    .install-tag(48,18,@font-size-xs,@white-base,6,fade(@theme-color,65%)); // lib/mixins.less
+}
+.base-tag() when(@skin = huawei) {
+    .install-tag(39,18,8px,@white-base,39,@orange-base); // lib/mixins.less
+}

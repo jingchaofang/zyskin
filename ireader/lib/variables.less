@@ -1,0 +1,125 @@
+/**
+ * ireader基础皮肤
+ */
+@skin: ireader;
+/**
+ * 计算标准calculate
+ */
+@px-base: 3px;
+@rem-base: 60rem;
+@cal-base: 60rem;
+
+/**
+ * 字相关
+ * 详情: 54px,33px,36px,39px,45px,48px
+ * 精选: 39px,48px,45px,30px,33px
+ */
+@font-size-base: 39/@px-base;
+@font-size-xxl: 54/@px-base;// extra extra large
+@font-size-xl: 48/@px-base; // extra large
+@font-size-l: 45/@px-base;  // large
+@font-size-m: 36/@px-base;  // middle
+@font-size-s: 33/@px-base;  // small
+@font-size-xs: 30/@px-base; // extra small
+/*
+ * 品牌色，主题色，蓝，出现场景：actionbar、特殊文字
+ */
+@theme-color: #0dace7;
+/**
+ * 基础黑
+ */
+@black-base: #363a3d;
+/**
+ * 基础色，黑，用于文字标题等一级文本
+ */
+@color-base: @black-base;
+/**
+ * 基础白，常规内容底色
+ */
+@white-base: #fcfcfc;
+/**
+ * 基础红
+ */
+@red-base: #e8554d;
+/**
+ * 基础橙
+ */
+@orange-base: #ff9a37;
+/**
+ * 基础黄
+ */
+@yellow-base: #ffbb05;
+/**
+ * 基础蓝，深蓝
+ */
+@blue-base: #0098d8;
+/**
+ * 基础灰，灰底色
+ */
+@gray-bg: #f6f6f6;
+/**
+ * 可点击色，深蓝
+ */
+@link-color: @blue-base;
+/**
+ * 不可点击色
+ */
+@unlink-color: fade(@color-base, 35%);
+/**
+ * 柔和色
+ */
+@muted-color: #999;
+/**
+ * 强调色，价格信息色，红
+ */
+@accent-color: @red-base;
+/**
+ * 信息色，二级文本色
+ */
+@info-color: fade(@color-base, 65%);
+/**
+ * 分割栏色，无内容底色
+ */
+@split-color: fade(@color-base, 5%);
+/**
+ * 点击态色
+ */
+@active-color: fade(@color-base, 8%);
+/**
+ * 分割线色
+ */
+@line-color: fade(@color-base, 15%);
+/**
+ * 浅蓝色信息色，焦点色，用于垂直榜单空心标签
+ */
+@foucs-color: fade(@theme-color, 45%);
+/**
+ * 书籍统一阴影效果
+ */
+@shadow: 0 9/@cal-base 21/@cal-base 0 fade(@color-base, 10%);
+/**
+ * 四周阴影
+ */
+@rounded-shadow: 0 0 21/@cal-base 0 fade(@color-base, 10%);
+/**
+ * 书籍封面质感渐变背景色结点
+ */
+@gradients-color: rgba(0,0,0,0),rgba(0,0,0,.12);
+/**
+ * 书籍封面书籍效果渐变结点
+ */
+@spine-color: rgba(0,0,0,.15),rgba(0,0,0,.08) 3px,rgba(255,255,255,.2),rgba(0,0,0,.15),rgba(0,0,0,.03) 6px;
+/**
+ * 书籍封面比例
+ */
+@v-book-w: 245/@cal-base; // 竖排书籍宽
+@v-book-h: 330/@cal-base; // 竖排书籍高
+@h-book-w: 276/@cal-base; // 横排书籍宽
+@h-book-h: 372/@cal-base; // 横排书籍高
+/**
+ * 间隔
+ * @scene 区块间距
+ */
+@spacer: 60/@cal-base;
+@spacer-x: 60/@cal-base; // 左右间距
+@spacer-y: 48/@cal-base; // 上下间距

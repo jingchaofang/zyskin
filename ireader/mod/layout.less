@@ -1,0 +1,89 @@
+@import "../lib.less";
+/**
+ * @file 布局共用样式
+ * @author jingchaofang <fangjingchao@zhangyue.com>
+ */
+
+.line,
+.xline {
+    height: 0;
+    // 1px基础类实现在common/static/css/ireader/mod/1px.less
+    .border-1px-custom(relative,0 0 1px,@line-color,"");
+}
+/**
+ * 打通分割线.line
+ * @scene 单本书榜单分隔效果
+ */
+/**
+ * 参照线，非打通分割线
+ * @scene 榜单底部分隔效果
+ */
+.xline {
+    margin: 0 @spacer-x;
+}
+
+/**
+ * 分隔栏，榜单与榜单之间
+ */
+.blank {
+    width: 100%;
+    height: 24/@cal-base;
+    background-color: @split-color;
+    // 防止分隔栏紧挨高度叠加,防止分隔栏下紧挨分割线，影响分隔效果
+    & + &,
+    & + .line,
+    & + .xline {
+        display: none;
+    }
+}
+/**
+ * 基础按钮样式
+ */
+.base-btn when not(@skin = huawei) {
+    .round-btn(72,30,@font-size-s,@theme-color); // lib/mixins.less
+    .active(@active-color);
+    min-width: (208-30*2)/@px-base;
+    text-align: center;
+    &:after {
+        border: 0;
+    }
+    border: 1px solid @theme-color;
+}
+.base-btn when(@skin = huawei) {
+    .round-btn(72,30,@font-size-s,@theme-color); // lib/mixins.less
+    .active(@active-color);
+    min-width: (208-30*2)/@px-base;
+    text-align: center;
+    &:after {
+        border: 0;
+    }
+    border: 1px solid @theme-color;
+}
+/**
+ * 按钮不可点击状态
+ */
+.base-btn.disable when not(@skin = ios) {
+    .box-shadow(none);
+    color: @line-color;
+    border-color: @unlink-color;
+}
+.base-btn.disable when(@skin = ios) {
+    .box-shadow(none);
+    color: @line-color;
+    border-color: @line-color;
+}
+/**
+ * 基础标签样式
+ */
+.base-label when not(@skin = huawei) {
+    .install-label(48,21,@font-size-xs,@unlink-color,6px); // lib/mixins.less
+    & + & {
+        margin-left: 24/@cal-base;
+    }
+}
+.base-label when(@skin = huawei) {
+    .install-label(36,15,8px,@orange-base,36px); // lib/mixins.less
+    & + & {
+        margin-left: 24/@cal-base;
+    }
+}
