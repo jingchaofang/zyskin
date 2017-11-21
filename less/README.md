@@ -4,7 +4,7 @@ ireader 样式库
 
 less@version1.7.5
 
-    [less(http://lesscss.org/)
+[less](http://lesscss.org/)
 
 ## 目录
 
@@ -17,6 +17,19 @@ ireader
 轮播图比例 <720*300>  <1080*450>
 
 书封比例<3:4> : <275*367>
+
+lib 函数库
+
+## 简写规则
+
+m: margin
+p: padding
+x: 水平方向左右两边，x尺码
+y: 垂直方向上下两边
+t: top
+b: bottom
+l: left 或 l尺码
+r: right
 
 ## 注意事项
 
@@ -54,30 +67,3 @@ columns属性伸缩容器上没有效果
 
 点击态目前频道页统一按:active实现
 
-爱读掌阅标签色值替换，涉及到书城和客户端，具体色值如下：
-
-VIP：#ffbb05
-
-免费：#0dace7
-
-包月：#3ae5de
-
-特价：#ff9a37
-
-lib 函数库
-
-## 简写规则
-
-m: margin
-p: padding
-x: 水平方向左右两边，x尺码
-y: 垂直方向上下两边
-t: top
-b: bottom
-l: left 或 l尺码
-r: right
-
-## 变量
-
-@spacer 间隔
-https://v4-alpha.getbootstrap.com/utilities/spacing/
