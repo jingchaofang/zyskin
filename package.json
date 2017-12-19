@@ -1,0 +1,29 @@
+{
+  "name": "zyskin",
+  "version": "1.0.0",
+  "description": "zyskin",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.2"
+  },
+  "scripts": {
+    "build": "gulp less",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jingchaofang/zyskin.git"
+  },
+  "keywords": [
+    "zyskin",
+    "ui"
+  ],
+  "author": "jingchaofang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jingchaofang/zyskin/issues"
+  },
+  "homepage": "https://github.com/jingchaofang/zyskin#readme"
+}
