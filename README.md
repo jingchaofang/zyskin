@@ -121,3 +121,10 @@
 |:--|:--|:---|:---|
 |变量定制|声明式(懒加载)变量，以最后一次被定义的值为准，直接覆盖变量值|指令式变量， 以最近一次定义的变量为准，!default仅当变量不存在时才赋值|同Sass|
 |逻辑控制|使用mixin|@if、@else if、@else、@for、@each、@while|if、else if、else、unless、for...in|
+
+### 命令行
+
+```
+npm install
+npm run build
+```

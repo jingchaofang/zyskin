@@ -2,8 +2,6 @@ ireader 样式库
 
 ## 预处理
 
-less@version1.7.5
-
 [less](http://lesscss.org/)
 
 ## 目录
