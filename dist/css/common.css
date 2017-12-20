@@ -82,6 +82,1291 @@
  * https://v4-alpha.getbootstrap.com/utilities/spacing/
  */
 /**
+ * @file 工具函数
+ * @author jingchaofang <fangjingchao@zhangyue.com>
+ */
+/**
+ * 透视
+ * 应用在舞台元素上（动画元素们的共同父辈元素）
+ * perspective: none | <length>
+ * perspective取值为none或不设置，就没有真3D空间。
+ * perspective取值越小，3D效果就越明显，也就是你的眼睛越靠近真3D。
+ * perspective的值无穷大，或值为0时与取值为none效果一样。
+ * http://caniuse.com/#search=perspective
+ */
+/**
+ * backface-visibility属性决定元素旋转背面是否可见。对于未旋转的元素，该元素的正面面向观看者。当其Y轴旋转约180度时会导致元素的背面面对观众。
+ * http://caniuse.com/#search=backface-visibility
+ */
+/**
+ * transform-style: flat | preserve-3d. 前者flat为默认值，表示平面的；后者preserve-3d表示3D透视
+ * 应用在舞台元素上（动画元素们的共同父辈元素）
+ * http://caniuse.com/#search=transform-style
+ */
+/**
+ * filter 滤镜
+ * @param  {[type]} @value [description]
+ * @return {[type]}        [description]
+ * http://caniuse.com/#feat=css-filters
+ */
+/**
+ * 背景的绘制区域
+ * @param arguments 背景绘制区域
+ *                  border-box 背景被裁剪到边框盒（背景在边框处裁掉可展现rgba边框透明）。
+ *                  padding-box 背景被裁剪到内边距框（解决某些android手机圆角失效）。
+ *                  content-box 背景被裁剪到内容框。
+ */
+/**
+ * 清除浮动
+ * http://www.cssmojo.com/latest_new_clearfix_so_far/
+ */
+/**
+ * animation 动画简写属性 https://www.w3.org/TR/css3-animations/
+ * @param animation-name  规定需要绑定到选择器的keyframe名称;none规定无动画效果(可用于覆盖来自级联的动画)
+ * @param animation-duration 规定完成动画所花费的时间,单位可为s或ms;默认值0意味着没有动画效果
+ * @param animation-timing-function 规定动画的速度曲线
+ *                                  ease(默认):动画以低速开始,然后加快,在结束前变慢;
+ *                                  linear:动画从头到尾的速度是相同的;
+ *                                  ease-in:动画以低速开始;
+ *                                  ease-out:动画以低速结束;
+ *                                  ease-in-out:动画以低速开始和结束
+ *                                  cubic-bezier(n,n,n,n):在cubic-bezier三次贝塞尔函数中的值,可能的值是从0到1的数值.
+ * @param animation-delay 规定在动画开始之前的延迟,单位可为s或ms,默认0
+ * @param animation-iteration-count 规定动画应该播放的次数n;infinite规定动画无限次播放
+ * @param animation-direction 规定是否应该轮流反向播放动画
+ *                            normal(默认):动画应该正常播放;
+ *                            alternate:动画应该轮流反向播放.
+ */
+/**
+ * animation-play-state 属性规定动画正在运行还是暂停。
+ */
+/**
+ * animation-fill-mode 属性规定动画在播放之前或之后，其动画效果是否可见。
+ * animation-fill-mode property is not supported in Android browser below 2.3.
+ * @param @arguments none(默认) 不改变默认行为。
+ *                   forwards 当动画完成后,保持最后一个属性值(在最后一个关键帧中定义)
+ *                   backwards 在animation-delay所指定的一段时间内,在动画显示之前,应用开始属性值(在第一个关键帧中定义)
+ *                   both 向前和向后填充模式都被应用
+ */
+/**
+ * 设置边框半径为同样的值
+ * @param {string} @radius:3px 半径大小
+ */
+/**
+ * 设置边框半径为不同的值
+ * @param  {[type]} @topleft:     0  左上角边框半径形状
+ * @param  {[type]} @topright:    0  右上角边框半径形状
+ * @param  {[type]} @bottomright: 0  右下角边框半径形状
+ * @param  {[type]} @bottomleft:  0  左下角边框半径形状
+ */
+/**
+ * 转换
+ */
+/**
+ * 过渡
+ * https://www.w3.org/TR/css3-transitions/
+ * 执行变换的属性：transition-property
+ * 变换延续的时间：transition-duration
+ * 在延续时间段，变换的速率变化：transition-timing-function
+ * 变换延迟时间：transition-delay
+ * 
+ * 注意：类似需要厂商前缀的transform属性不能使用当前函数，需要手写满足如下
+ * -webkit-transition: -webkit-transform .2s linear;
+ * transition: transform .2s linear;
+ */
+/**
+ * 线性渐变gradients
+ * @param type 渐变类型,线性渐变linear;径向渐变radial,由它们的中心定义
+ * @param angle 角度(deg),向下180(默认)/向上0/向左-90/向右90
+ * @param color 渐变颜色结点、颜色占比%
+ * @usage less:
+ *        .gradients(linear;0;red,blue); 注意这里传参用的分号分割
+ */
+/**
+ * 径向渐变gradients
+ * @param type  渐变类型,线性渐变linear;径向渐变radial,由它们的中心定义
+ * @param shape 渐变形状,可以是值circle(圆形)或ellipse(椭圆形,默认)
+ *        size  用来确定径向渐变的结束形状大小,它可以是以下四个值：closest-side,farthest-side,closest-corner,farthest-corner
+ *            circle(圆形)下size可能显式设置为<length>。表示的是用长度值指定径向渐变的横向或纵向直径长度，
+ *            并根据横向和纵向的直径来确定径向渐变的形状是圆或者是椭圆。此值不能负值。
+ *            ellipse(椭圆形)下size可能显式设置为［<length>|<percentage>］。主要用来设置椭圆的大小。
+ *            第一个值代表椭圆的水平半径，第二个值代表垂直半径。这两个值除了使用<length>定义大小之外还可以使用<percentage>来定义这两半径大小。
+ *            使用<percentage>定义值是相对于径向渐变容器的尺寸。同样不能为负值。
+ *        position 定义径向渐变的圆心位置，默认为center
+ *            <length>：用长度值指定径向渐变圆心的横坐标或纵坐标。可以为负值。
+ *            <percentage>：用百分比指定径向渐变圆心的横坐标或纵坐标。可以为负值。
+ *            left：设置左边为径向渐变圆心的横坐标值。
+ *            center：设置中间为径向渐变圆心的横坐标值或纵坐标。
+ *            right：设置右边为径向渐变圆心的横坐标值。
+ *            top：设置顶部为径向渐变圆心的纵标值。
+ *            bottom：设置底部为径向渐变圆心的纵标值。
+ * @param color 渐变颜色结点、颜色占比%   
+ * 例：-webkit-radial-gradient(farthest-side circle at 50% 75%, rgb(220, 75, 200),rgb(0, 0, 75));
+ */
+/**
+ * 单行溢出打点...
+ */
+/**
+ * 多行溢出打点...
+ * @param  {number} @line:2 打点行数
+ */
+/**
+ * 添加一个或多个阴影，多个阴影用逗号相隔
+ * .box-shadow(0px 9px 16px -8px rgba(0,0,0,.4));
+ * @param  h-shadow                必需,水平阴影的位置,允许负值
+ * @param  v-shadow                必需,垂直阴影的位置,允许负值
+ * @param  blur                    可选,模糊距离
+ * @param  spread                  可选,阴影的尺寸
+ * @param  color                   可选,阴影的颜色。
+ *                                 外部阴影(outset默认)内部阴影(inset)
+ * @trick  iphone6+上阴影无效，根据场景需要添加额外的border-radius处理
+ */
+/**
+ * 阴影实现内边框
+ * @param  {[type]} @width: 1px   边框宽度
+ * @param  {[type]} @color: #000  边框颜色
+ */
+/**
+ * 阴影实现点击态，避免背景色实现不能遮罩原有背景图片的问题
+ * 因为:active不能作用在伪类元素上，可以父级下作用(例如&:active:after)
+ * @param @color:rgba(0, 0, 0, .5) 点击态色
+ * @trick ios上:active无效可添加js激活：document.body.addEventListener('touchstart', function() {})
+ */
+/**
+ * 对应元素开启GPU硬件加速，可避免渲染残影
+ */
+/**
+ * @file 常用动画
+ * @author jingchaofang <fangjingchao@zhangyue.com>
+ */
+/**
+ * 翻牌效果
+ */
+/**
+ * 匀速旋转动画
+ * @param @speed .2s 动画周期速度
+ */
+/**
+ * 页面加载loading
+ * 黄色和红色小球的循环交替
+ */
+
+/**
+ * ireader基础皮肤
+ */
+/**
+ * 计算标准calculate
+ */
+/**
+ * 字相关
+ */
+/*
+ * 品牌色，主题色，蓝，出现场景：actionbar、特殊文字
+ */
+/**
+ * 基础黑
+ */
+/**
+ * 基础色，黑，用于文字标题等一级文本
+ */
+/**
+ * 基础白，常规内容底色
+ */
+/**
+ * 基础红
+ */
+/**
+ * 基础橙
+ */
+/**
+ * 基础黄
+ */
+/**
+ * 基础蓝，深蓝
+ */
+/**
+ * 基础灰，灰底色
+ */
+/**
+ * 可点击色，深蓝
+ */
+/**
+ * 不可点击色
+ */
+/**
+ * 柔和色
+ */
+/**
+ * 强调色，价格信息色，红
+ */
+/**
+ * 信息色，二级文本色
+ */
+/**
+ * 分割栏色，无内容底色
+ */
+/**
+ * 点击态色
+ */
+/**
+ * 分割线色
+ */
+/**
+ * 浅蓝色信息色，焦点色，用于垂直榜单空心标签
+ */
+/**
+ * 书籍统一阴影效果
+ */
+/**
+ * 四周阴影
+ */
+/**
+ * 书籍封面质感渐变背景色结点
+ */
+/**
+ * 书籍封面书籍效果渐变结点
+ */
+/**
+ * 书籍封面比例
+ */
+/**
+ * 间隔
+ * @scene 区块间距
+ * https://v4-alpha.getbootstrap.com/utilities/spacing/
+ */
+/**
+ * @file 工具函数
+ * @author jingchaofang <fangjingchao@zhangyue.com>
+ */
+/**
+ * 透视
+ * 应用在舞台元素上（动画元素们的共同父辈元素）
+ * perspective: none | <length>
+ * perspective取值为none或不设置，就没有真3D空间。
+ * perspective取值越小，3D效果就越明显，也就是你的眼睛越靠近真3D。
+ * perspective的值无穷大，或值为0时与取值为none效果一样。
+ * http://caniuse.com/#search=perspective
+ */
+/**
+ * backface-visibility属性决定元素旋转背面是否可见。对于未旋转的元素，该元素的正面面向观看者。当其Y轴旋转约180度时会导致元素的背面面对观众。
+ * http://caniuse.com/#search=backface-visibility
+ */
+/**
+ * transform-style: flat | preserve-3d. 前者flat为默认值，表示平面的；后者preserve-3d表示3D透视
+ * 应用在舞台元素上（动画元素们的共同父辈元素）
+ * http://caniuse.com/#search=transform-style
+ */
+/**
+ * filter 滤镜
+ * @param  {[type]} @value [description]
+ * @return {[type]}        [description]
+ * http://caniuse.com/#feat=css-filters
+ */
+/**
+ * 背景的绘制区域
+ * @param arguments 背景绘制区域
+ *                  border-box 背景被裁剪到边框盒（背景在边框处裁掉可展现rgba边框透明）。
+ *                  padding-box 背景被裁剪到内边距框（解决某些android手机圆角失效）。
+ *                  content-box 背景被裁剪到内容框。
+ */
+/**
+ * 清除浮动
+ * http://www.cssmojo.com/latest_new_clearfix_so_far/
+ */
+/**
+ * animation 动画简写属性 https://www.w3.org/TR/css3-animations/
+ * @param animation-name  规定需要绑定到选择器的keyframe名称;none规定无动画效果(可用于覆盖来自级联的动画)
+ * @param animation-duration 规定完成动画所花费的时间,单位可为s或ms;默认值0意味着没有动画效果
+ * @param animation-timing-function 规定动画的速度曲线
+ *                                  ease(默认):动画以低速开始,然后加快,在结束前变慢;
+ *                                  linear:动画从头到尾的速度是相同的;
+ *                                  ease-in:动画以低速开始;
+ *                                  ease-out:动画以低速结束;
+ *                                  ease-in-out:动画以低速开始和结束
+ *                                  cubic-bezier(n,n,n,n):在cubic-bezier三次贝塞尔函数中的值,可能的值是从0到1的数值.
+ * @param animation-delay 规定在动画开始之前的延迟,单位可为s或ms,默认0
+ * @param animation-iteration-count 规定动画应该播放的次数n;infinite规定动画无限次播放
+ * @param animation-direction 规定是否应该轮流反向播放动画
+ *                            normal(默认):动画应该正常播放;
+ *                            alternate:动画应该轮流反向播放.
+ */
+/**
+ * animation-play-state 属性规定动画正在运行还是暂停。
+ */
+/**
+ * animation-fill-mode 属性规定动画在播放之前或之后，其动画效果是否可见。
+ * animation-fill-mode property is not supported in Android browser below 2.3.
+ * @param @arguments none(默认) 不改变默认行为。
+ *                   forwards 当动画完成后,保持最后一个属性值(在最后一个关键帧中定义)
+ *                   backwards 在animation-delay所指定的一段时间内,在动画显示之前,应用开始属性值(在第一个关键帧中定义)
+ *                   both 向前和向后填充模式都被应用
+ */
+/**
+ * 设置边框半径为同样的值
+ * @param {string} @radius:3px 半径大小
+ */
+/**
+ * 设置边框半径为不同的值
+ * @param  {[type]} @topleft:     0  左上角边框半径形状
+ * @param  {[type]} @topright:    0  右上角边框半径形状
+ * @param  {[type]} @bottomright: 0  右下角边框半径形状
+ * @param  {[type]} @bottomleft:  0  左下角边框半径形状
+ */
+/**
+ * 转换
+ */
+/**
+ * 过渡
+ * https://www.w3.org/TR/css3-transitions/
+ * 执行变换的属性：transition-property
+ * 变换延续的时间：transition-duration
+ * 在延续时间段，变换的速率变化：transition-timing-function
+ * 变换延迟时间：transition-delay
+ * 
+ * 注意：类似需要厂商前缀的transform属性不能使用当前函数，需要手写满足如下
+ * -webkit-transition: -webkit-transform .2s linear;
+ * transition: transform .2s linear;
+ */
+/**
+ * 线性渐变gradients
+ * @param type 渐变类型,线性渐变linear;径向渐变radial,由它们的中心定义
+ * @param angle 角度(deg),向下180(默认)/向上0/向左-90/向右90
+ * @param color 渐变颜色结点、颜色占比%
+ * @usage less:
+ *        .gradients(linear;0;red,blue); 注意这里传参用的分号分割
+ */
+/**
+ * 径向渐变gradients
+ * @param type  渐变类型,线性渐变linear;径向渐变radial,由它们的中心定义
+ * @param shape 渐变形状,可以是值circle(圆形)或ellipse(椭圆形,默认)
+ *        size  用来确定径向渐变的结束形状大小,它可以是以下四个值：closest-side,farthest-side,closest-corner,farthest-corner
+ *            circle(圆形)下size可能显式设置为<length>。表示的是用长度值指定径向渐变的横向或纵向直径长度，
+ *            并根据横向和纵向的直径来确定径向渐变的形状是圆或者是椭圆。此值不能负值。
+ *            ellipse(椭圆形)下size可能显式设置为［<length>|<percentage>］。主要用来设置椭圆的大小。
+ *            第一个值代表椭圆的水平半径，第二个值代表垂直半径。这两个值除了使用<length>定义大小之外还可以使用<percentage>来定义这两半径大小。
+ *            使用<percentage>定义值是相对于径向渐变容器的尺寸。同样不能为负值。
+ *        position 定义径向渐变的圆心位置，默认为center
+ *            <length>：用长度值指定径向渐变圆心的横坐标或纵坐标。可以为负值。
+ *            <percentage>：用百分比指定径向渐变圆心的横坐标或纵坐标。可以为负值。
+ *            left：设置左边为径向渐变圆心的横坐标值。
+ *            center：设置中间为径向渐变圆心的横坐标值或纵坐标。
+ *            right：设置右边为径向渐变圆心的横坐标值。
+ *            top：设置顶部为径向渐变圆心的纵标值。
+ *            bottom：设置底部为径向渐变圆心的纵标值。
+ * @param color 渐变颜色结点、颜色占比%   
+ * 例：-webkit-radial-gradient(farthest-side circle at 50% 75%, rgb(220, 75, 200),rgb(0, 0, 75));
+ */
+/**
+ * 单行溢出打点...
+ */
+/**
+ * 多行溢出打点...
+ * @param  {number} @line:2 打点行数
+ */
+/**
+ * 添加一个或多个阴影，多个阴影用逗号相隔
+ * .box-shadow(0px 9px 16px -8px rgba(0,0,0,.4));
+ * @param  h-shadow                必需,水平阴影的位置,允许负值
+ * @param  v-shadow                必需,垂直阴影的位置,允许负值
+ * @param  blur                    可选,模糊距离
+ * @param  spread                  可选,阴影的尺寸
+ * @param  color                   可选,阴影的颜色。
+ *                                 外部阴影(outset默认)内部阴影(inset)
+ * @trick  iphone6+上阴影无效，根据场景需要添加额外的border-radius处理
+ */
+/**
+ * 阴影实现内边框
+ * @param  {[type]} @width: 1px   边框宽度
+ * @param  {[type]} @color: #000  边框颜色
+ */
+/**
+ * 阴影实现点击态，避免背景色实现不能遮罩原有背景图片的问题
+ * 因为:active不能作用在伪类元素上，可以父级下作用(例如&:active:after)
+ * @param @color:rgba(0, 0, 0, .5) 点击态色
+ * @trick ios上:active无效可添加js激活：document.body.addEventListener('touchstart', function() {})
+ */
+/**
+ * 对应元素开启GPU硬件加速，可避免渲染残影
+ */
+/**
+ * @file 公用css绘制图标类
+ * @author jingchaofang <fangjingchao@zhangyue.com>
+ */
+/**
+ * caret
+ * 插入符号,空心箭头
+ * @scene 更多入口图标
+ */
+/**
+ * 插入符号,空心箭头
+ * @scene 更多入口图标稳定版
+ */
+/**
+ * 插入符号,空心箭头
+ * @scene 更多入口图标稳定版
+ */
+/**
+ * 实心❤
+ */
+/**
+ * 空心❤
+ */
+/**
+ * 十字交叉×和圆圈
+ * @scene 关闭按钮
+ */
+/**
+ * 向上箭头和圆圈
+ * @scene 返回顶部图标
+ */
+/**
+ * 简单的圆点字符通过缩放控制大小
+ * 小圆点·
+ * 大圆点●
+ * @scene 分隔连接
+ */
+/**
+ * 惊叹号+圆圈
+ * @scene 帮助提示
+ * @usage <div class="i-bang-cricle">!</div>
+ */
+/**
+ * 齿轮
+ * @scene 偏好设置图标
+ */
+/**
+ * @scene 播放按钮
+ */
+/**
+ * @scene 暂停按钮
+ */
+/**
+ * @scene 加号
+ */
+
+/**
+ * @file 混合函数
+ * @author jingchaofang <fangjingchao@zhangyue.com>
+ */
+/**
+ * ------
+ * 物理1px
+ * ------
+ */
+/**
+ * 公共伪类样式
+ */
+/**
+ * 公共边框媒体查询适配样式
+ */
+/**
+ * 边框弧度定制接口
+ * @param @r 边框弧度值，可通过传入非数字参数不使用该定制样式
+ */
+/**
+ * 指定选择器添加物理1px边框样式，适用于单次使用1px
+ * 多次使用需加样式.border-1px再样式定制，详情见/common/static/css/ireader/mod/1px.less
+ * @usage less: 
+ *        #border-1px > .border-1px(...);
+ * @param @selector          选择器
+ * @param @position:relative 定位方式(relative|fixed)
+ * @param @w:1px 1px 1px 1px 边框宽度(上、右、下、左)
+ * @param @c:#e0e0e0         边框色值
+ * @param @r:4               边框弧度
+ * @scene 按钮边框，区块分割细线
+ */
+/**
+ * 自定义边框样式
+ * @param  {[type]} @position 定位(fixed|relative)
+ * @param  {[type]} @w        边框宽
+ * @param  {[type]} @c        边框色
+ * @param  {[type]} @r        边框弧度
+ * @return {[type]}           自定义样式
+ */
+/**
+ * -------
+ * 布局相关
+ * -------
+ */
+/**
+ * 基础按钮组装样式，1px标配，需显式添加.border-1px类
+ * 伸缩性前提：若非容器项目，需显示赋予display:inline-block;
+ * @param  {[type]} @h  按钮高度，若为px单位，显示传入px，配合.border-1px-radius()
+ * @param  {[type]} @p 按钮内边距，居中伸缩
+ * @param  {[type]} @fs  按钮文本字体大小
+ * @param  {[type]} @c  按钮文本色
+ * @param  {[type]} @r 按钮弧度
+ */
+/**
+ * 基本圆头按钮，1px标配，需显式添加.border-1px类
+ * @scene  心愿点赞按钮、我要投票按钮
+ * @param  {[type]} @height  按钮高度
+ * @param  {[type]} @p 按钮内边距，居中伸缩
+ * @param  {[type]} @fs  按钮文本字体大小
+ * @param  {[type]} @c  按钮文本色
+ */
+/**
+ * 前置伪类图标的按钮，后置已实现了1px
+ * TODO:统一书城图标尺寸
+ * @param  {[type]} @h        按钮高度，行高
+ * @param  {[type]} @p        按钮内边距
+ * @param  {[type]} @fs       文本大小
+ * @param  {[type]} @c        文本颜色
+ * @param  {[type]} @pseudo-w 前伪类图标宽
+ * @param  {[type]} @pseudo-h 前伪类图标高
+ * @param  {[type]} @pseudo-m 前伪类图标和按钮文本的间距，外边距
+ */
+/**
+ * 基础标签组装样式，1px标配，需显式添加.border-1px类
+ * 伸缩性前提：若非容器项目，需显示赋予display:inline-block;
+ * @param  {[type]} @height  高度
+ * @param  {[type]} @padding 内边距，居中伸缩
+ * @param  {[type]} @fs 文本字体大小
+ * @param  {[type]} @c 文本色
+ * @param  {[type]} @r 弧度
+ */
+/**
+ * 基础角标样式
+ * 伸缩性前提：若非容器项目，需显示赋予display:inline-block;
+ * 应用绑定在了span上，非容器项目，需inline-block
+ * @param  {[type]} @h  高度
+ * @param  {[type]} @p 内边距，居中伸缩
+ * @param  {[type]} @fs 文本字体大小
+ * @param  {[type]} @c 文本色
+ * @param  {[type]} @r 弧度
+ * @param  {[type]} @bg 背景色
+ */
+/**
+ * 基础角标样式
+ * 书籍运营相关的标签（推荐、独家、首发、包月、特价、免费等）
+ */
+
+/**
+ * @file 工具函数
+ * @author jingchaofang <fangjingchao@zhangyue.com>
+ */
+/**
+ * 透视
+ * 应用在舞台元素上（动画元素们的共同父辈元素）
+ * perspective: none | <length>
+ * perspective取值为none或不设置，就没有真3D空间。
+ * perspective取值越小，3D效果就越明显，也就是你的眼睛越靠近真3D。
+ * perspective的值无穷大，或值为0时与取值为none效果一样。
+ * http://caniuse.com/#search=perspective
+ */
+/**
+ * backface-visibility属性决定元素旋转背面是否可见。对于未旋转的元素，该元素的正面面向观看者。当其Y轴旋转约180度时会导致元素的背面面对观众。
+ * http://caniuse.com/#search=backface-visibility
+ */
+/**
+ * transform-style: flat | preserve-3d. 前者flat为默认值，表示平面的；后者preserve-3d表示3D透视
+ * 应用在舞台元素上（动画元素们的共同父辈元素）
+ * http://caniuse.com/#search=transform-style
+ */
+/**
+ * filter 滤镜
+ * @param  {[type]} @value [description]
+ * @return {[type]}        [description]
+ * http://caniuse.com/#feat=css-filters
+ */
+/**
+ * 背景的绘制区域
+ * @param arguments 背景绘制区域
+ *                  border-box 背景被裁剪到边框盒（背景在边框处裁掉可展现rgba边框透明）。
+ *                  padding-box 背景被裁剪到内边距框（解决某些android手机圆角失效）。
+ *                  content-box 背景被裁剪到内容框。
+ */
+/**
+ * 清除浮动
+ * http://www.cssmojo.com/latest_new_clearfix_so_far/
+ */
+/**
+ * animation 动画简写属性 https://www.w3.org/TR/css3-animations/
+ * @param animation-name  规定需要绑定到选择器的keyframe名称;none规定无动画效果(可用于覆盖来自级联的动画)
+ * @param animation-duration 规定完成动画所花费的时间,单位可为s或ms;默认值0意味着没有动画效果
+ * @param animation-timing-function 规定动画的速度曲线
+ *                                  ease(默认):动画以低速开始,然后加快,在结束前变慢;
+ *                                  linear:动画从头到尾的速度是相同的;
+ *                                  ease-in:动画以低速开始;
+ *                                  ease-out:动画以低速结束;
+ *                                  ease-in-out:动画以低速开始和结束
+ *                                  cubic-bezier(n,n,n,n):在cubic-bezier三次贝塞尔函数中的值,可能的值是从0到1的数值.
+ * @param animation-delay 规定在动画开始之前的延迟,单位可为s或ms,默认0
+ * @param animation-iteration-count 规定动画应该播放的次数n;infinite规定动画无限次播放
+ * @param animation-direction 规定是否应该轮流反向播放动画
+ *                            normal(默认):动画应该正常播放;
+ *                            alternate:动画应该轮流反向播放.
+ */
+/**
+ * animation-play-state 属性规定动画正在运行还是暂停。
+ */
+/**
+ * animation-fill-mode 属性规定动画在播放之前或之后，其动画效果是否可见。
+ * animation-fill-mode property is not supported in Android browser below 2.3.
+ * @param @arguments none(默认) 不改变默认行为。
+ *                   forwards 当动画完成后,保持最后一个属性值(在最后一个关键帧中定义)
+ *                   backwards 在animation-delay所指定的一段时间内,在动画显示之前,应用开始属性值(在第一个关键帧中定义)
+ *                   both 向前和向后填充模式都被应用
+ */
+/**
+ * 设置边框半径为同样的值
+ * @param {string} @radius:3px 半径大小
+ */
+/**
+ * 设置边框半径为不同的值
+ * @param  {[type]} @topleft:     0  左上角边框半径形状
+ * @param  {[type]} @topright:    0  右上角边框半径形状
+ * @param  {[type]} @bottomright: 0  右下角边框半径形状
+ * @param  {[type]} @bottomleft:  0  左下角边框半径形状
+ */
+/**
+ * 转换
+ */
+/**
+ * 过渡
+ * https://www.w3.org/TR/css3-transitions/
+ * 执行变换的属性：transition-property
+ * 变换延续的时间：transition-duration
+ * 在延续时间段，变换的速率变化：transition-timing-function
+ * 变换延迟时间：transition-delay
+ * 
+ * 注意：类似需要厂商前缀的transform属性不能使用当前函数，需要手写满足如下
+ * -webkit-transition: -webkit-transform .2s linear;
+ * transition: transform .2s linear;
+ */
+/**
+ * 线性渐变gradients
+ * @param type 渐变类型,线性渐变linear;径向渐变radial,由它们的中心定义
+ * @param angle 角度(deg),向下180(默认)/向上0/向左-90/向右90
+ * @param color 渐变颜色结点、颜色占比%
+ * @usage less:
+ *        .gradients(linear;0;red,blue); 注意这里传参用的分号分割
+ */
+/**
+ * 径向渐变gradients
+ * @param type  渐变类型,线性渐变linear;径向渐变radial,由它们的中心定义
+ * @param shape 渐变形状,可以是值circle(圆形)或ellipse(椭圆形,默认)
+ *        size  用来确定径向渐变的结束形状大小,它可以是以下四个值：closest-side,farthest-side,closest-corner,farthest-corner
+ *            circle(圆形)下size可能显式设置为<length>。表示的是用长度值指定径向渐变的横向或纵向直径长度，
+ *            并根据横向和纵向的直径来确定径向渐变的形状是圆或者是椭圆。此值不能负值。
+ *            ellipse(椭圆形)下size可能显式设置为［<length>|<percentage>］。主要用来设置椭圆的大小。
+ *            第一个值代表椭圆的水平半径，第二个值代表垂直半径。这两个值除了使用<length>定义大小之外还可以使用<percentage>来定义这两半径大小。
+ *            使用<percentage>定义值是相对于径向渐变容器的尺寸。同样不能为负值。
+ *        position 定义径向渐变的圆心位置，默认为center
+ *            <length>：用长度值指定径向渐变圆心的横坐标或纵坐标。可以为负值。
+ *            <percentage>：用百分比指定径向渐变圆心的横坐标或纵坐标。可以为负值。
+ *            left：设置左边为径向渐变圆心的横坐标值。
+ *            center：设置中间为径向渐变圆心的横坐标值或纵坐标。
+ *            right：设置右边为径向渐变圆心的横坐标值。
+ *            top：设置顶部为径向渐变圆心的纵标值。
+ *            bottom：设置底部为径向渐变圆心的纵标值。
+ * @param color 渐变颜色结点、颜色占比%   
+ * 例：-webkit-radial-gradient(farthest-side circle at 50% 75%, rgb(220, 75, 200),rgb(0, 0, 75));
+ */
+/**
+ * 单行溢出打点...
+ */
+/**
+ * 多行溢出打点...
+ * @param  {number} @line:2 打点行数
+ */
+/**
+ * 添加一个或多个阴影，多个阴影用逗号相隔
+ * .box-shadow(0px 9px 16px -8px rgba(0,0,0,.4));
+ * @param  h-shadow                必需,水平阴影的位置,允许负值
+ * @param  v-shadow                必需,垂直阴影的位置,允许负值
+ * @param  blur                    可选,模糊距离
+ * @param  spread                  可选,阴影的尺寸
+ * @param  color                   可选,阴影的颜色。
+ *                                 外部阴影(outset默认)内部阴影(inset)
+ * @trick  iphone6+上阴影无效，根据场景需要添加额外的border-radius处理
+ */
+/**
+ * 阴影实现内边框
+ * @param  {[type]} @width: 1px   边框宽度
+ * @param  {[type]} @color: #000  边框颜色
+ */
+/**
+ * 阴影实现点击态，避免背景色实现不能遮罩原有背景图片的问题
+ * 因为:active不能作用在伪类元素上，可以父级下作用(例如&:active:after)
+ * @param @color:rgba(0, 0, 0, .5) 点击态色
+ * @trick ios上:active无效可添加js激活：document.body.addEventListener('touchstart', function() {})
+ */
+/**
+ * 对应元素开启GPU硬件加速，可避免渲染残影
+ */
+
+/**
+ * ireader基础皮肤
+ */
+/**
+ * 计算标准calculate
+ */
+/**
+ * 字相关
+ */
+/*
+ * 品牌色，主题色，蓝，出现场景：actionbar、特殊文字
+ */
+/**
+ * 基础黑
+ */
+/**
+ * 基础色，黑，用于文字标题等一级文本
+ */
+/**
+ * 基础白，常规内容底色
+ */
+/**
+ * 基础红
+ */
+/**
+ * 基础橙
+ */
+/**
+ * 基础黄
+ */
+/**
+ * 基础蓝，深蓝
+ */
+/**
+ * 基础灰，灰底色
+ */
+/**
+ * 可点击色，深蓝
+ */
+/**
+ * 不可点击色
+ */
+/**
+ * 柔和色
+ */
+/**
+ * 强调色，价格信息色，红
+ */
+/**
+ * 信息色，二级文本色
+ */
+/**
+ * 分割栏色，无内容底色
+ */
+/**
+ * 点击态色
+ */
+/**
+ * 分割线色
+ */
+/**
+ * 浅蓝色信息色，焦点色，用于垂直榜单空心标签
+ */
+/**
+ * 书籍统一阴影效果
+ */
+/**
+ * 四周阴影
+ */
+/**
+ * 书籍封面质感渐变背景色结点
+ */
+/**
+ * 书籍封面书籍效果渐变结点
+ */
+/**
+ * 书籍封面比例
+ */
+/**
+ * 间隔
+ * @scene 区块间距
+ * https://v4-alpha.getbootstrap.com/utilities/spacing/
+ */
+
+/**
+ * @file 混合函数
+ * @author jingchaofang <fangjingchao@zhangyue.com>
+ */
+/**
+ * ------
+ * 物理1px
+ * ------
+ */
+/**
+ * 公共伪类样式
+ */
+/**
+ * 公共边框媒体查询适配样式
+ */
+/**
+ * 边框弧度定制接口
+ * @param @r 边框弧度值，可通过传入非数字参数不使用该定制样式
+ */
+/**
+ * 指定选择器添加物理1px边框样式，适用于单次使用1px
+ * 多次使用需加样式.border-1px再样式定制，详情见/common/static/css/ireader/mod/1px.less
+ * @usage less: 
+ *        #border-1px > .border-1px(...);
+ * @param @selector          选择器
+ * @param @position:relative 定位方式(relative|fixed)
+ * @param @w:1px 1px 1px 1px 边框宽度(上、右、下、左)
+ * @param @c:#e0e0e0         边框色值
+ * @param @r:4               边框弧度
+ * @scene 按钮边框，区块分割细线
+ */
+/**
+ * 自定义边框样式
+ * @param  {[type]} @position 定位(fixed|relative)
+ * @param  {[type]} @w        边框宽
+ * @param  {[type]} @c        边框色
+ * @param  {[type]} @r        边框弧度
+ * @return {[type]}           自定义样式
+ */
+/**
+ * -------
+ * 布局相关
+ * -------
+ */
+/**
+ * 基础按钮组装样式，1px标配，需显式添加.border-1px类
+ * 伸缩性前提：若非容器项目，需显示赋予display:inline-block;
+ * @param  {[type]} @h  按钮高度，若为px单位，显示传入px，配合.border-1px-radius()
+ * @param  {[type]} @p 按钮内边距，居中伸缩
+ * @param  {[type]} @fs  按钮文本字体大小
+ * @param  {[type]} @c  按钮文本色
+ * @param  {[type]} @r 按钮弧度
+ */
+/**
+ * 基本圆头按钮，1px标配，需显式添加.border-1px类
+ * @scene  心愿点赞按钮、我要投票按钮
+ * @param  {[type]} @height  按钮高度
+ * @param  {[type]} @p 按钮内边距，居中伸缩
+ * @param  {[type]} @fs  按钮文本字体大小
+ * @param  {[type]} @c  按钮文本色
+ */
+/**
+ * 前置伪类图标的按钮，后置已实现了1px
+ * TODO:统一书城图标尺寸
+ * @param  {[type]} @h        按钮高度，行高
+ * @param  {[type]} @p        按钮内边距
+ * @param  {[type]} @fs       文本大小
+ * @param  {[type]} @c        文本颜色
+ * @param  {[type]} @pseudo-w 前伪类图标宽
+ * @param  {[type]} @pseudo-h 前伪类图标高
+ * @param  {[type]} @pseudo-m 前伪类图标和按钮文本的间距，外边距
+ */
+/**
+ * 基础标签组装样式，1px标配，需显式添加.border-1px类
+ * 伸缩性前提：若非容器项目，需显示赋予display:inline-block;
+ * @param  {[type]} @height  高度
+ * @param  {[type]} @padding 内边距，居中伸缩
+ * @param  {[type]} @fs 文本字体大小
+ * @param  {[type]} @c 文本色
+ * @param  {[type]} @r 弧度
+ */
+/**
+ * 基础角标样式
+ * 伸缩性前提：若非容器项目，需显示赋予display:inline-block;
+ * 应用绑定在了span上，非容器项目，需inline-block
+ * @param  {[type]} @h  高度
+ * @param  {[type]} @p 内边距，居中伸缩
+ * @param  {[type]} @fs 文本字体大小
+ * @param  {[type]} @c 文本色
+ * @param  {[type]} @r 弧度
+ * @param  {[type]} @bg 背景色
+ */
+/**
+ * 基础角标样式
+ * 书籍运营相关的标签（推荐、独家、首发、包月、特价、免费等）
+ */
+/**
+ * @file  常用物理1px固化为样式类.border-1px
+ * @scene 分割细线，细描边线，适用于多次使用1px
+ * @depend lib/mixins.less 里的.border-1px-custom(...);
+ * @usage html:
+ *            <div class="selector border-1px"></div>
+ *        less:
+ *            .selector {
+ *                .border-1px-custom(relative,1px,#e0e0e0,"");
+ *            }
+ */
+/**
+ * 1px效果样式
+ * .border-1px, .line, .xline, .base-btn, .base-lable,
+ */
+.border-1px:after,
+.line:after,
+.xline:after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  pointer-events: none;
+  border-style: solid;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1) {
+  .border-1px:after,
+  .line:after,
+  .xline:after {
+    right: 0;
+    bottom: 0;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.33) {
+  .border-1px:after,
+  .line:after,
+  .xline:after {
+    right: -33%;
+    bottom: -33%;
+    -webkit-transform: scale(0.7518797);
+    transform: scale(0.7518797);
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+  .border-1px:after,
+  .line:after,
+  .xline:after {
+    right: -50%;
+    bottom: -50%;
+    -webkit-transform: scale(0.66666667);
+    transform: scale(0.66666667);
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+  .border-1px:after,
+  .line:after,
+  .xline:after {
+    right: -100%;
+    bottom: -100%;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+  .border-1px:after,
+  .line:after,
+  .xline:after {
+    right: -200%;
+    bottom: -200%;
+    -webkit-transform: scale(0.33333333);
+    transform: scale(0.33333333);
+  }
+}
+
+/**
+ * @file 工具函数
+ * @author jingchaofang <fangjingchao@zhangyue.com>
+ */
+/**
+ * 透视
+ * 应用在舞台元素上（动画元素们的共同父辈元素）
+ * perspective: none | <length>
+ * perspective取值为none或不设置，就没有真3D空间。
+ * perspective取值越小，3D效果就越明显，也就是你的眼睛越靠近真3D。
+ * perspective的值无穷大，或值为0时与取值为none效果一样。
+ * http://caniuse.com/#search=perspective
+ */
+/**
+ * backface-visibility属性决定元素旋转背面是否可见。对于未旋转的元素，该元素的正面面向观看者。当其Y轴旋转约180度时会导致元素的背面面对观众。
+ * http://caniuse.com/#search=backface-visibility
+ */
+/**
+ * transform-style: flat | preserve-3d. 前者flat为默认值，表示平面的；后者preserve-3d表示3D透视
+ * 应用在舞台元素上（动画元素们的共同父辈元素）
+ * http://caniuse.com/#search=transform-style
+ */
+/**
+ * filter 滤镜
+ * @param  {[type]} @value [description]
+ * @return {[type]}        [description]
+ * http://caniuse.com/#feat=css-filters
+ */
+/**
+ * 背景的绘制区域
+ * @param arguments 背景绘制区域
+ *                  border-box 背景被裁剪到边框盒（背景在边框处裁掉可展现rgba边框透明）。
+ *                  padding-box 背景被裁剪到内边距框（解决某些android手机圆角失效）。
+ *                  content-box 背景被裁剪到内容框。
+ */
+/**
+ * 清除浮动
+ * http://www.cssmojo.com/latest_new_clearfix_so_far/
+ */
+/**
+ * animation 动画简写属性 https://www.w3.org/TR/css3-animations/
+ * @param animation-name  规定需要绑定到选择器的keyframe名称;none规定无动画效果(可用于覆盖来自级联的动画)
+ * @param animation-duration 规定完成动画所花费的时间,单位可为s或ms;默认值0意味着没有动画效果
+ * @param animation-timing-function 规定动画的速度曲线
+ *                                  ease(默认):动画以低速开始,然后加快,在结束前变慢;
+ *                                  linear:动画从头到尾的速度是相同的;
+ *                                  ease-in:动画以低速开始;
+ *                                  ease-out:动画以低速结束;
+ *                                  ease-in-out:动画以低速开始和结束
+ *                                  cubic-bezier(n,n,n,n):在cubic-bezier三次贝塞尔函数中的值,可能的值是从0到1的数值.
+ * @param animation-delay 规定在动画开始之前的延迟,单位可为s或ms,默认0
+ * @param animation-iteration-count 规定动画应该播放的次数n;infinite规定动画无限次播放
+ * @param animation-direction 规定是否应该轮流反向播放动画
+ *                            normal(默认):动画应该正常播放;
+ *                            alternate:动画应该轮流反向播放.
+ */
+/**
+ * animation-play-state 属性规定动画正在运行还是暂停。
+ */
+/**
+ * animation-fill-mode 属性规定动画在播放之前或之后，其动画效果是否可见。
+ * animation-fill-mode property is not supported in Android browser below 2.3.
+ * @param @arguments none(默认) 不改变默认行为。
+ *                   forwards 当动画完成后,保持最后一个属性值(在最后一个关键帧中定义)
+ *                   backwards 在animation-delay所指定的一段时间内,在动画显示之前,应用开始属性值(在第一个关键帧中定义)
+ *                   both 向前和向后填充模式都被应用
+ */
+/**
+ * 设置边框半径为同样的值
+ * @param {string} @radius:3px 半径大小
+ */
+/**
+ * 设置边框半径为不同的值
+ * @param  {[type]} @topleft:     0  左上角边框半径形状
+ * @param  {[type]} @topright:    0  右上角边框半径形状
+ * @param  {[type]} @bottomright: 0  右下角边框半径形状
+ * @param  {[type]} @bottomleft:  0  左下角边框半径形状
+ */
+/**
+ * 转换
+ */
+/**
+ * 过渡
+ * https://www.w3.org/TR/css3-transitions/
+ * 执行变换的属性：transition-property
+ * 变换延续的时间：transition-duration
+ * 在延续时间段，变换的速率变化：transition-timing-function
+ * 变换延迟时间：transition-delay
+ * 
+ * 注意：类似需要厂商前缀的transform属性不能使用当前函数，需要手写满足如下
+ * -webkit-transition: -webkit-transform .2s linear;
+ * transition: transform .2s linear;
+ */
+/**
+ * 线性渐变gradients
+ * @param type 渐变类型,线性渐变linear;径向渐变radial,由它们的中心定义
+ * @param angle 角度(deg),向下180(默认)/向上0/向左-90/向右90
+ * @param color 渐变颜色结点、颜色占比%
+ * @usage less:
+ *        .gradients(linear;0;red,blue); 注意这里传参用的分号分割
+ */
+/**
+ * 径向渐变gradients
+ * @param type  渐变类型,线性渐变linear;径向渐变radial,由它们的中心定义
+ * @param shape 渐变形状,可以是值circle(圆形)或ellipse(椭圆形,默认)
+ *        size  用来确定径向渐变的结束形状大小,它可以是以下四个值：closest-side,farthest-side,closest-corner,farthest-corner
+ *            circle(圆形)下size可能显式设置为<length>。表示的是用长度值指定径向渐变的横向或纵向直径长度，
+ *            并根据横向和纵向的直径来确定径向渐变的形状是圆或者是椭圆。此值不能负值。
+ *            ellipse(椭圆形)下size可能显式设置为［<length>|<percentage>］。主要用来设置椭圆的大小。
+ *            第一个值代表椭圆的水平半径，第二个值代表垂直半径。这两个值除了使用<length>定义大小之外还可以使用<percentage>来定义这两半径大小。
+ *            使用<percentage>定义值是相对于径向渐变容器的尺寸。同样不能为负值。
+ *        position 定义径向渐变的圆心位置，默认为center
+ *            <length>：用长度值指定径向渐变圆心的横坐标或纵坐标。可以为负值。
+ *            <percentage>：用百分比指定径向渐变圆心的横坐标或纵坐标。可以为负值。
+ *            left：设置左边为径向渐变圆心的横坐标值。
+ *            center：设置中间为径向渐变圆心的横坐标值或纵坐标。
+ *            right：设置右边为径向渐变圆心的横坐标值。
+ *            top：设置顶部为径向渐变圆心的纵标值。
+ *            bottom：设置底部为径向渐变圆心的纵标值。
+ * @param color 渐变颜色结点、颜色占比%   
+ * 例：-webkit-radial-gradient(farthest-side circle at 50% 75%, rgb(220, 75, 200),rgb(0, 0, 75));
+ */
+/**
+ * 单行溢出打点...
+ */
+/**
+ * 多行溢出打点...
+ * @param  {number} @line:2 打点行数
+ */
+/**
+ * 添加一个或多个阴影，多个阴影用逗号相隔
+ * .box-shadow(0px 9px 16px -8px rgba(0,0,0,.4));
+ * @param  h-shadow                必需,水平阴影的位置,允许负值
+ * @param  v-shadow                必需,垂直阴影的位置,允许负值
+ * @param  blur                    可选,模糊距离
+ * @param  spread                  可选,阴影的尺寸
+ * @param  color                   可选,阴影的颜色。
+ *                                 外部阴影(outset默认)内部阴影(inset)
+ * @trick  iphone6+上阴影无效，根据场景需要添加额外的border-radius处理
+ */
+/**
+ * 阴影实现内边框
+ * @param  {[type]} @width: 1px   边框宽度
+ * @param  {[type]} @color: #000  边框颜色
+ */
+/**
+ * 阴影实现点击态，避免背景色实现不能遮罩原有背景图片的问题
+ * 因为:active不能作用在伪类元素上，可以父级下作用(例如&:active:after)
+ * @param @color:rgba(0, 0, 0, .5) 点击态色
+ * @trick ios上:active无效可添加js激活：document.body.addEventListener('touchstart', function() {})
+ */
+/**
+ * 对应元素开启GPU硬件加速，可避免渲染残影
+ */
+/**
+ * @file 常用flex功能样式固化为样式类，节省代码量
+ * @author jingchaofang <fangjingchao@zhangyue.com>
+ * @depend lib/utilities.less
+ */
+.flex,
+.flex-v-center,
+.flex-h-center,
+.flex-h-justify,
+.flex-v-end,
+.flex-justify-v-center,
+.flex-end-v-center,
+.flex-all-center {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+}
+[class*=flexcol] {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+.flex-v-center,
+.flex-justify-v-center,
+.flex-end-v-center,
+.flexcol-h-center,
+.flexcol-justify-h-center,
+.flex-all-center,
+.flexcol-all-center {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.flex-h-center,
+.flexcol-v-center,
+.flex-all-center,
+.flexcol-all-center {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.flex-v-end {
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+.flex-h-justify,
+.flex-justify-v-center,
+.flexcol-justify {
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+.flex-end-v-center {
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+.flex-item {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+  width: 0%;
+}
+
+/**
+ * ireader基础皮肤
+ */
+/**
+ * 计算标准calculate
+ */
+/**
+ * 字相关
+ */
+/*
+ * 品牌色，主题色，蓝，出现场景：actionbar、特殊文字
+ */
+/**
+ * 基础黑
+ */
+/**
+ * 基础色，黑，用于文字标题等一级文本
+ */
+/**
+ * 基础白，常规内容底色
+ */
+/**
+ * 基础红
+ */
+/**
+ * 基础橙
+ */
+/**
+ * 基础黄
+ */
+/**
+ * 基础蓝，深蓝
+ */
+/**
+ * 基础灰，灰底色
+ */
+/**
+ * 可点击色，深蓝
+ */
+/**
+ * 不可点击色
+ */
+/**
+ * 柔和色
+ */
+/**
+ * 强调色，价格信息色，红
+ */
+/**
+ * 信息色，二级文本色
+ */
+/**
+ * 分割栏色，无内容底色
+ */
+/**
+ * 点击态色
+ */
+/**
+ * 分割线色
+ */
+/**
+ * 浅蓝色信息色，焦点色，用于垂直榜单空心标签
+ */
+/**
+ * 书籍统一阴影效果
+ */
+/**
+ * 四周阴影
+ */
+/**
+ * 书籍封面质感渐变背景色结点
+ */
+/**
+ * 书籍封面书籍效果渐变结点
+ */
+/**
+ * 书籍封面比例
+ */
+/**
+ * 间隔
+ * @scene 区块间距
+ * https://v4-alpha.getbootstrap.com/utilities/spacing/
+ */
+/**
  * @file 混合函数
  * @author jingchaofang <fangjingchao@zhangyue.com>
  */
@@ -332,307 +1617,6 @@
  * 对应元素开启GPU硬件加速，可避免渲染残影
  */
 /**
- * @file 常用动画
- * @author jingchaofang <fangjingchao@zhangyue.com>
- */
-/**
- * 翻牌效果
- */
-/**
- * 匀速旋转动画
- * @param @speed .2s 动画周期速度
- */
-/**
- * 页面加载loading
- * 黄色和红色小球的循环交替
- */
-/**
- * @file 公用css绘制图标类
- * @author jingchaofang <fangjingchao@zhangyue.com>
- */
-/**
- * caret
- * 插入符号,空心箭头
- * @scene 更多入口图标
- */
-/**
- * 插入符号,空心箭头
- * @scene 更多入口图标稳定版
- */
-/**
- * 插入符号,空心箭头
- * @scene 更多入口图标稳定版
- */
-/**
- * 实心❤
- */
-/**
- * 空心❤
- */
-/**
- * 十字交叉×和圆圈
- * @scene 关闭按钮
- */
-/**
- * 向上箭头和圆圈
- * @scene 返回顶部图标
- */
-/**
- * 简单的圆点字符通过缩放控制大小
- * 小圆点·
- * 大圆点●
- * @scene 分隔连接
- */
-/**
- * 惊叹号+圆圈
- * @scene 帮助提示
- * @usage <div class="i-bang-cricle">!</div>
- */
-/**
- * 齿轮
- * @scene 偏好设置图标
- */
-/**
- * @scene 播放按钮
- */
-/**
- * @scene 暂停按钮
- */
-/**
- * @scene 加号
- */
-/**
- * @file 标准化样式，删减适用于webview
- * @author jingchaofang <fangjingchao@zhangyue.com>
- */
-html {
-  -webkit-text-size-adjust: 100%;
-}
-@media screen and (max-width: 320px) {
-  html {
-    font-size: 17.7778px;
-  }
-}
-@media screen and (min-width: 321px) and (max-width: 360px) {
-  html {
-    font-size: 20px;
-  }
-}
-@media screen and (min-width: 361px) and (max-width: 375px) {
-  html {
-    font-size: 20.8333px;
-  }
-}
-@media screen and (min-width: 376px) and (max-width: 414px) {
-  html {
-    font-size: 23px;
-  }
-}
-@media screen and (min-width: 720px) {
-  html {
-    font-size: 30px;
-  }
-}
-body,
-p,
-ul,
-li {
-  margin: 0;
-  padding: 0;
-  word-break: break-all;
-}
-body {
-  /**
-     * 走系统字体设置
-     * 当所有的字体都找不到时，使用sans-serif非衬线字体在显示器中的显示效果会比较好
-     */
-  font-family: sans-serif;
-  background-color: #fcfcfc;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-}
-em,
-i {
-  font-weight: normal;
-  font-style: normal;
-}
-ul {
-  list-style: none;
-}
-img {
-  border: 0;
-  vertical-align: middle;
-  /*去除现代浏览器img底部空隙*/
-}
-img[data-src] {
-  opacity: 0;
-  /*lazyload去除img边框hack*/
-}
-a {
-  text-decoration: none;
-  outline: none;
-}
-input,
-select,
-textarea {
-  font-size: 100%;
-  border: 0;
-  outline: none;
-  -webkit-appearance: none;
-}
-/**
- * @file  常用物理1px固化为样式类.border-1px
- * @scene 分割细线，细描边线，适用于多次使用1px
- * @depend lib/mixins.less 里的.border-1px-custom(...);
- * @usage html: 
- *            <div class="selector border-1px"></div>
- *        less: 
- *            .selector {
- *                .border-1px-custom(relative,1px,#e0e0e0,"");
- *            }
- */
-/**
- * 1px效果样式
- * .border-1px, .line, .xline, .base-btn, .base-lable,
- */
-.border-1px:after,
-.line:after,
-.xline:after {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  display: block;
-  -webkit-transform: scale(1);
-  transform: scale(1);
-  -webkit-transform-origin: 0 0;
-  transform-origin: 0 0;
-  pointer-events: none;
-  border-style: solid;
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 1) {
-  .border-1px:after,
-  .line:after,
-  .xline:after {
-    right: 0;
-    bottom: 0;
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 1.33) {
-  .border-1px:after,
-  .line:after,
-  .xline:after {
-    right: -33%;
-    bottom: -33%;
-    -webkit-transform: scale(0.7518797);
-    transform: scale(0.7518797);
-  }
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
-  .border-1px:after,
-  .line:after,
-  .xline:after {
-    right: -50%;
-    bottom: -50%;
-    -webkit-transform: scale(0.66666667);
-    transform: scale(0.66666667);
-  }
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-  .border-1px:after,
-  .line:after,
-  .xline:after {
-    right: -100%;
-    bottom: -100%;
-    -webkit-transform: scale(0.5);
-    transform: scale(0.5);
-  }
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 3) {
-  .border-1px:after,
-  .line:after,
-  .xline:after {
-    right: -200%;
-    bottom: -200%;
-    -webkit-transform: scale(0.33333333);
-    transform: scale(0.33333333);
-  }
-}
-/**
- * @file 常用flex功能样式固化为样式类，节省代码量
- * @author jingchaofang <fangjingchao@zhangyue.com>
- * @depend lib/utilities.less
- */
-.flex,
-.flex-v-center,
-.flex-h-center,
-.flex-h-justify,
-.flex-v-end,
-.flex-justify-v-center,
-.flex-end-v-center,
-.flex-all-center {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-}
-[class*=flexcol] {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-}
-.flex-v-center,
-.flex-justify-v-center,
-.flex-end-v-center,
-.flexcol-h-center,
-.flexcol-justify-h-center,
-.flex-all-center,
-.flexcol-all-center {
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-}
-.flex-h-center,
-.flexcol-v-center,
-.flex-all-center,
-.flexcol-all-center {
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-}
-.flex-v-end {
-  -webkit-box-align: end;
-  -webkit-align-items: flex-end;
-  align-items: flex-end;
-}
-.flex-h-justify,
-.flex-justify-v-center,
-.flexcol-justify {
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-}
-.flex-end-v-center {
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-  justify-content: flex-end;
-}
-.flex-item {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  flex: 1;
-  width: 0%;
-}
-/**
  * @file 布局共用样式
  * @author jingchaofang <fangjingchao@zhangyue.com>
  */
@@ -777,4 +1761,168 @@ textarea {
 }
 .base-label + .base-label {
   margin-left: 0.4rem;
+}
+
+/**
+ * ireader基础皮肤
+ */
+/**
+ * 计算标准calculate
+ */
+/**
+ * 字相关
+ */
+/*
+ * 品牌色，主题色，蓝，出现场景：actionbar、特殊文字
+ */
+/**
+ * 基础黑
+ */
+/**
+ * 基础色，黑，用于文字标题等一级文本
+ */
+/**
+ * 基础白，常规内容底色
+ */
+/**
+ * 基础红
+ */
+/**
+ * 基础橙
+ */
+/**
+ * 基础黄
+ */
+/**
+ * 基础蓝，深蓝
+ */
+/**
+ * 基础灰，灰底色
+ */
+/**
+ * 可点击色，深蓝
+ */
+/**
+ * 不可点击色
+ */
+/**
+ * 柔和色
+ */
+/**
+ * 强调色，价格信息色，红
+ */
+/**
+ * 信息色，二级文本色
+ */
+/**
+ * 分割栏色，无内容底色
+ */
+/**
+ * 点击态色
+ */
+/**
+ * 分割线色
+ */
+/**
+ * 浅蓝色信息色，焦点色，用于垂直榜单空心标签
+ */
+/**
+ * 书籍统一阴影效果
+ */
+/**
+ * 四周阴影
+ */
+/**
+ * 书籍封面质感渐变背景色结点
+ */
+/**
+ * 书籍封面书籍效果渐变结点
+ */
+/**
+ * 书籍封面比例
+ */
+/**
+ * 间隔
+ * @scene 区块间距
+ * https://v4-alpha.getbootstrap.com/utilities/spacing/
+ */
+/**
+ * @file 标准化样式，删减适用于webview
+ * @author jingchaofang <fangjingchao@zhangyue.com>
+ */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+@media screen and (max-width: 320px) {
+  html {
+    font-size: 17.7778px;
+  }
+}
+@media screen and (min-width: 321px) and (max-width: 360px) {
+  html {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 361px) and (max-width: 375px) {
+  html {
+    font-size: 20.8333px;
+  }
+}
+@media screen and (min-width: 376px) and (max-width: 414px) {
+  html {
+    font-size: 23px;
+  }
+}
+@media screen and (min-width: 720px) {
+  html {
+    font-size: 30px;
+  }
+}
+body,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  word-break: break-all;
+}
+body {
+  /**
+     * 走系统字体设置
+     * 当所有的字体都找不到时，使用sans-serif非衬线字体在显示器中的显示效果会比较好
+     */
+  font-family: sans-serif;
+  background-color: #fcfcfc;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+em,
+i {
+  font-weight: normal;
+  font-style: normal;
+}
+ul {
+  list-style: none;
+}
+img {
+  border: 0;
+  vertical-align: middle;
+  /*去除现代浏览器img底部空隙*/
+}
+img[data-src] {
+  opacity: 0;
+  /*lazyload去除img边框hack*/
+}
+a {
+  text-decoration: none;
+  outline: none;
+}
+input,
+select,
+textarea {
+  font-size: 100%;
+  border: 0;
+  outline: none;
+  -webkit-appearance: none;
 }
