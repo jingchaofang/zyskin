@@ -156,7 +156,7 @@
  * 变换延续的时间：transition-duration
  * 在延续时间段，变换的速率变化：transition-timing-function
  * 变换延迟时间：transition-delay
- * 
+ *
  * 注意：类似需要厂商前缀的transform属性不能使用当前函数，需要手写满足如下
  * -webkit-transition: -webkit-transform .2s linear;
  * transition: transform .2s linear;
@@ -195,7 +195,7 @@
  *            right：设置右边为径向渐变圆心的横坐标值。
  *            top：设置顶部为径向渐变圆心的纵标值。
  *            bottom：设置底部为径向渐变圆心的纵标值。
- * @param color 渐变颜色结点、颜色占比%   
+ * @param color 渐变颜色结点、颜色占比%
  * 例：-webkit-radial-gradient(farthest-side circle at 50% 75%, rgb(220, 75, 200),rgb(0, 0, 75));
  */
 .gradients(@type;@shape;@color) when(@type = radial) {
@@ -249,6 +249,7 @@
  * 因为:active不能作用在伪类元素上，可以父级下作用(例如&:active:after)
  * @param @color:rgba(0, 0, 0, .5) 点击态色
  * @trick ios上:active无效可添加js激活：document.body.addEventListener('touchstart', function() {})
+ * https://caniuse.com/#search=active
  */
 .active(@color: rgba(0, 0, 0, .5)) {
     &:active {
