@@ -1,0 +1,104 @@
+@import 'normalize.css';
+
+.test {
+  background: black;
+  border-radius: 12px;
+  background-size: 12px;
+}
+
+.flex {
+  display: flex;
+}
+
+$color: #fff;
+
+.cssnext {
+  background: color(red alpha(-10%));
+  &:before {
+    content: '';
+    display: block;
+    color: $color;
+  }
+}
+
+@for $i from 1 to 3 {
+  p:nth-of-type($i) {
+    margin-left: calc( 100% / $i);
+  }
+}
+
+.precss {
+  @if 3 < 5 {
+    background: green;
+  }
+  @else {
+    background: blue;
+  }
+}
+
+@keyframes animationExample {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animateThis {
+  animation: animationExample 2s;
+  display: flex;
+}
+
+@media screen and (max-width: 414px) and (min-width: 376px) {
+  html {
+    font-size: 23px;
+  }
+}
+
+@media screen and (max-width: 414px) and (min-width: 376px) {
+  body {
+    font-size: 25px;
+  }
+}
+
+$social: twitter,
+facebook,
+youtube;
+@each $icon in ($social) {
+  .icon-$(icon) {
+    background: url('img/$(icon).png');
+  }
+}
+
+@define-mixin icon $network,
+$color {
+  .button.$(network) {
+    background-image: url('img/$(network).png');
+    background-color: $color;
+  }
+}
+
+@mixin icon twitter,
+blue;
+@mixin icon youtube,
+red;
+
+@define-mixin icon $network,
+$color {
+  .button.$(network) {
+    background-image: url('img/$(network).png');
+    background-color: $color;
+    @mixin-content;
+  }
+}
+
+@mixin icon twitter,
+blue {
+  width: 3rem;
+}
+
+@mixin icon youtube,
+red {
+  width: 4rem;
+}

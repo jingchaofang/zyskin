@@ -107,8 +107,8 @@
  *                   both 向前和向后填充模式都被应用
  */
 .animation-fill-mode(@arguments) {
-     -webkit-animation-fill-mode: @@arguments;
-     animation-fill-mode: @@arguments;
+    -webkit-animation-fill-mode: @@arguments;
+    animation-fill-mode: @@arguments;
 }
 
 /**
@@ -116,7 +116,6 @@
  * @param {string} @radius:3px 半径大小
  */
 .rounded(@radius: 3px) {
-    -webkit-border-radius: @radius;
     border-radius: @radius;
     .background-clip(padding-box); // 背景在边框处裁掉可展现rgba边框透明
 }
@@ -128,10 +127,6 @@
  * @param  {[type]} @bottomleft:  0  左下角边框半径形状
  */
 .border-radius(@topleft: 0, @topright: 0, @bottomright: 0, @bottomleft: 0) {
-    -webkit-border-top-left-radius: @topleft;
-    -webkit-border-top-right-radius: @topright;
-    -webkit-border-bottom-right-radius: @bottomright;
-    -webkit-border-bottom-left-radius: @bottomleft;
     border-top-left-radius: @topleft;
     border-top-right-radius: @topright;
     border-bottom-right-radius: @bottomright;

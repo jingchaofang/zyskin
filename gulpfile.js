@@ -1,4 +1,10 @@
 var gulp = require('gulp');
+var postcss = require('gulp-postcss');
+var precss = require('precss');
+var cssnext = require('postcss-cssnext');
+// var atImport = require('postcss-import');
+var mqpacker = require('css-mqpacker');
+var cssnano = require('cssnano');
 var less = require('gulp-less');
 var path = require('path');
 var pump = require('pump');
@@ -53,4 +59,14 @@ gulp.task('minify-css', ['less'], function(cb) {
 
 gulp.task('build', (callback) => {
   gulpSequence('minify-css', 'minify-js')(callback);
+});
+
+gulp.task('postcss', function(cb) {
+  var processors = [
+    precss,
+    mqpacker,
+    cssnext({warnForDuplicates: false}),
+    cssnano
+  ];
+  pump([gulp.src('./src/*.css'), postcss(processors), gulp.dest('./dest/')], cb);
 });

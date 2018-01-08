@@ -5,18 +5,26 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "css-mqpacker": "^6.0.1",
+    "cssnano": "^3.10.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^3.9.0",
     "gulp-concat": "^2.6.1",
     "gulp-less": "^3.3.2",
+    "gulp-postcss": "^7.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-sequence": "^0.4.6",
     "gulp-sourcemaps": "^2.6.1",
     "gulp-uglify": "^3.0.0",
+    "postcss": "^6.0.16",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-import": "^11.0.0",
+    "precss": "^2.0.0",
     "pump": "^2.0.0"
   },
   "scripts": {
     "build": "gulp build",
+    "postcss": "gulp postcss",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,5 +40,10 @@
   "bugs": {
     "url": "https://github.com/jingchaofang/zyskin/issues"
   },
-  "homepage": "https://github.com/jingchaofang/zyskin#readme"
+  "homepage": "https://github.com/jingchaofang/zyskin#readme",
+  "browserslist": [
+    "iOS >= 7.1",
+    "Safari >= 6",
+    "Android >= 3"
+  ]
 }
